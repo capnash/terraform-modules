@@ -1,40 +1,41 @@
 ###### TAGS #####
 variable "tags" {
   description = "A map of tags to add to all resources"
-  type        = "map"
+  type        = map
 }
 
 variable "name" {
   description = "Name to be used on all the resources as identifier"
-  type        = "string"
+  type        = string
 }
 
 variable "acl" {
   description = "ACL to apply to bucket"
+  type        = string
   default     = "private"
 }
 
 variable "kms_key_arn" {
   description = " KMS Key to use for server side encryption"
-  type        = "string"
+  type        = string
 }
 
 variable "encrypt" {
   description = "Encrypt the s3 bucket at rest"
-  type        = "string"
+  type        = string
   default     = true
 }
 
 variable "enabled" {
   description = "Encrypt the s3 bucket at rest"
-  type        = "string"
+  type        = string
   default     = true
 }
 
 variable "lc_remove_old_prefix" {
   description = "Life Cycle rule to delete objects prefix, default /"
   default     = "/"
-  type        = "string"
+  type        = string
 }
 
 variable "lc_remove_old_enabled" {
@@ -44,10 +45,12 @@ variable "lc_remove_old_enabled" {
 
 variable "lc_remove_old_days" {
   description = "Life Cycle rule to delete objects number of days since created to delete, default 14 days"
+  type        = string
   default     = 14
 }
 
 variable "versioning" {
   description = "keeping multiple variants of an object in the same bucket"
+  type        = string
   default     = false
 }
