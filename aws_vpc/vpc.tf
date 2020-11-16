@@ -1,12 +1,9 @@
-#############
-# Notes to self, figure out tags
-
 resource "aws_vpc" "vpc" {
   cidr_block           = var.cidr
   instance_tenancy     = var.instance_tenancy
   enable_dns_hostnames = var.enable_dns_hostnames
   enable_dns_support   = var.enable_dns_support
-  tags                 = merge(var.tags, map("Name", format("%s", var.vpc_name)))
+  tags                 = merge(var.tags, map("Name", format("%s", var.name)))
 }
 
 resource "aws_default_network_acl" "default" {

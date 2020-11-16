@@ -1,39 +1,43 @@
 # ##### TAGS #####
-# variable "tags" {
-#   description = "A map of tags to add to all resources"
-#   default     = {}
-# }
+variable "tags" {
+  description = "A map of tags to add to all resources"
+  type        = map
+}
 
-# variable "name" {
-#   description = "Name to be used on all the resources as identifier"
-#   default     = ""
-# }
+variable "name" {
+  description = "Name to be used on all the resources as identifier"
+  default     = ""
+}
 
 # ##### Network #####
-# variable "public_subnet_tags" {
-#   description = "Additional tags for the public subnets"
-#   default     = {}
-# }
+variable "public_subnet_tags" {
+  description = "Additional tags for the public subnets"
+  type        = map
+  default     = {}
+}
 
-# variable "private_subnet_tags" {
-#   description = "Additional tags for the private subnets"
-#   default     = {}
-# }
+variable "private_subnet_tags" {
+  description = "Additional tags for the private subnets"
+  type        = map
+  default     = {}
+}
 
-# variable "rds_subnet_tags" {
-#   description = "Additional tags for the rds subnets"
-#   default     = {}
-# }
+variable "rds_subnet_tags" {
+  description = "Additional tags for the rds subnets"
+  type        = map
+  default     = {}
+}
 
-# variable "elasticache_subnet_tags" {
-#   description = "Additional tags for the elasticache subnets"
-#   default     = {}
-# }
+variable "elasticache_subnet_tags" {
+  description = "Additional tags for the elasticache subnets"
+  type        = map
+  default     = {}
+}
 
-# variable "ssh_safe_ips" {
-#   description = "IP consider safe for ssh access"
-#   type        = "map"
-# }
+variable "ssh_safe_ips" {
+  description = "IP consider safe for ssh access"
+  type        = map
+}
 
 # variable "vpc_cidrs" {
 #   description = "all the other vpc ip cidr"
@@ -61,14 +65,14 @@ variable "enable_dns_support" {
   default     = true
 }
 
-# variable "use_internal_dhcp" {
-#   description = "If set to true will use the dhcp set given by var.dhcp_set_id"
-# }
+variable "use_internal_dhcp" {
+  description = "If set to true will use the dhcp set given by var.dhcp_set_id"
+}
 
-# variable "dhcp_set_id" {
-#   description = "ID of DHCP Options"
-#   default     = ""
-# }
+variable "dhcp_set_id" {
+  description = "ID of DHCP Options"
+  default     = ""
+}
 
 # variable "use_internal_dns" {
 #   type        = "string"
@@ -82,34 +86,30 @@ variable "enable_dns_support" {
 #   default     = ""
 # }
 
-# ##### Subnet #####
-# variable "public_subnets_cidr" {
-#   description = "CIDR for public subets"
-#   type        = "string"
-#   default     = "0.0.0.0/0"
-# }
-# variable "private_subnets_cidr" {
-#   description = "cidr for private subnets"
-#   type        = "string"
-#   default     = "0.0.0.0/0"
-# }
+##### Subnet #####
+variable "public_subnets_cidr" {
+  description = "CIDR for public subets"
+  type        = string
+}
+variable "private_subnets_cidr" {
+  description = "cidr for private subnets"
+  type        = string
+}
 
-# variable "rds_subnets_cidr" {
-#   description = "cidr for rds subnets"
-#   type        = "string"
-#   default     = "0.0.0.0/0"
-# }
+variable "rds_subnets_cidr" {
+  description = "cidr for rds subnets"
+  type        = string
+}
 
-# variable "elasticache_subnets_cidr" {
-#   description = "cidr for elastic cache subnets"
-#   type        = "string"
-#   default     = "0.0.0.0/0"
-# }
+variable "elasticache_subnets_cidr" {
+  description = "cidr for elastic cache subnets"
+  type        = string
+}
 
-# variable "map_public_ip_on_launch" {
-#   description = "should be false if you do not want to auto-assign public IP on launch"
-#   default     = true
-# }
+variable "map_public_ip_on_launch" {
+  description = "should be false if you do not want to auto-assign public IP on launch"
+  default     = true
+}
 
 # # keep these ones for compatibilty
 # variable "public_subnets" {
@@ -136,20 +136,23 @@ variable "enable_dns_support" {
 
 
 # ##### Endpoints and Gateways #####
-# variable "enable_s3_endpoint" {
-#   description = "should be true if you want to provision an S3 endpoint to the VPC"
-#   default     = true
-# }
+variable "enable_s3_endpoint" {
+  description = "should be true if you want to provision an S3 endpoint to the VPC"
+  type        = string
+  default     = true
+}
 
-# variable "enable_nat_gateway" {
-#   description = "should be true if you want to provision NAT Gateways for each of your private networks"
-#   default     = true
-# }
+variable "enable_nat_gateway" {
+  description = "should be true if you want to provision NAT Gateways for each of your private networks"
+  type        = string
+  default     = true
+}
 
-# variable "single_nat_gateway" {
-#   description = "should be true if you want to provision a single shared NAT Gateway across all of your private networks"
-#   default     = true
-# }
+variable "single_nat_gateway" {
+  description = "should be true if you want to provision a single shared NAT Gateway across all of your private networks"
+  type        = string
+  default     = true
+}
 
 # ##### Routing #####
 # variable "public_propagating_vgws" {
