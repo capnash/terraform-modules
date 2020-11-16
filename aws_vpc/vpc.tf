@@ -29,7 +29,7 @@ resource "aws_default_network_acl" "default" {
   }
 
   lifecycle {
-    ignore_changes = ["default_network_acl_id", "ingress", "egress", "subnet_ids"]
+    ignore_changes = [default_network_acl_id, ingress, egress, subnet_ids]
   }
 }
 
