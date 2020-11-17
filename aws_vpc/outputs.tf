@@ -1,95 +1,128 @@
-# ##### VPC #####
-# output vpc_id {
-#   value = "${aws_vpc.vpc.id}"
-# }
+##### VPC #####
+output vpc_id {
+  value = aws_vpc.vpc.id
+}
 
-# output vpc_cidr_block {
-#   value = "${aws_vpc.vpc.cidr_block}"
-# }
+output vpc_cidr_block {
+  value = aws_vpc.vpc.cidr_block
+}
 
-# ##### Subnets #####
-# output "public_subnets" {
-#   value = ["${concat(aws_subnet.public.*.id, aws_subnet.public_cidr.*.id)}"]
-# }
+output vpc_enable_classiclink {
+  value = aws_vpc.vpc.enable_classiclink
+}
 
-# output "private_subnets" {
-#   value = ["${concat(aws_subnet.private.*.id, aws_subnet.private_cidr.*.id)}"]
-# }
+output vpc_main_route_table_id {
+  value = aws_vpc.vpc.main_route_table_id
+}
 
-# output "rds_subnets" {
-#   value = ["${concat(aws_subnet.rds.*.id, aws_subnet.rds_cidr.*.id)}"]
-# }
+output vpc_default_network_acl_id {
+  value = aws_vpc.vpc.default_network_acl_id
+}
 
-# output "rds_subnet_group_name" {
-#   value = "${concat(aws_db_subnet_group.rds.*.name, aws_db_subnet_group.rds_cidr.*.name)}"
-# }
+output vpc_default_security_group_id {
+  value = aws_vpc.vpc.default_security_group_id 
+}
 
-# output "rds_subnet_group_id" {
-#   value = "${concat(aws_db_subnet_group.rds.*.id, aws_db_subnet_group.rds_cidr.*.id)}"
-# }
+output vpc_default_route_table_id {
+  value = aws_vpc.vpc.default_route_table_id 
+}
 
-# output "rds_subnet_group_arn" {
-#   value = "${concat(aws_db_subnet_group.rds.*.arn, aws_db_subnet_group.rds_cidr.*.arn)}"
-# }
+##### Subnets #####
+output "public_subnets" {
+  value = aws_subnet.public_cidr.*.id
+}
 
-# output "elasticache_subnets" {
-#   value = ["${concat(aws_subnet.elasticache.*.id, aws_subnet.elasticache_cidr.*.id)}"]
-# }
+output "private_subnets" {
+  value = aws_subnet.private_cidr.*.id
+}
 
-# output "elasticache_subnet_group_name" {
-#   value = "${concat(aws_elasticache_subnet_group.elasticache.*.name, aws_elasticache_subnet_group.elasticache_cidr.*.name)}"
-# }
+output "rds_subnets" {
+  value = aws_subnet.rds_cidr.*.id
+}
 
-# output "elasticache_subnet_group_id" {
-#   value = "${concat(aws_elasticache_subnet_group.elasticache.*.id, aws_elasticache_subnet_group.elasticache_cidr.*.id)}"
-# }
+output "elasticache_subnets" {
+  value = aws_subnet.elasticache_cidr.*.id
+}
 
+output "rds_subnet_group_name" {
+  value = aws_db_subnet_group.rds_cidr.*.name
+}
 
-# ##### Endpoints and Gateways #####
-# output "igw_id" {
-#   value = "${aws_internet_gateway.igw.id}"
-# }
+output "rds_subnet_group_id" {
+  value = aws_db_subnet_group.rds_cidr.*.id
+}
 
-# output "nat_eips" {
-#   value = ["${aws_eip.nateip.*.id}"]
-# }
+output "rds_subnet_group_arn" {
+  value = aws_db_subnet_group.rds_cidr.*.arn
+}
 
-# output "nat_eips_public_ips" {
-#   value = ["${aws_eip.nateip.*.public_ip}"]
-# }
+output "elasticache_subnet_group_name" {
+  value = aws_elasticache_subnet_group.elasticache_cidr.*.name
+}
 
-# output "natgw_ids" {
-#   value = ["${aws_nat_gateway.natgw.*.id}"]
-# }
-
-# output "vpn_gateway_id" {
-#   value = "${aws_vpn_gateway.vpn_gateway.id}"
-# }
+output "elasticache_subnet_group_id" {
+  value = aws_elasticache_subnet_group.elasticache_cidr.*.id
+}
 
 
-# ##### Routing #####
-# output "public_route_table_ids" {
-#   value = ["${aws_route_table.public.*.id}"]
-# }
+##### Endpoints and Gateways #####
+output "igw_id" {
+  value = aws_internet_gateway.igw.id
+}
 
-# output "private_route_table_ids" {
-#   value = ["${aws_route_table.private.*.id}"]
-# }
+output "s3_endpoint_id" {
+  value = aws_vpc_endpoint.ep.id
+}
+
+output "s3_endpoint_arn" {
+  value = aws_vpc_endpoint.ep.arn
+}
+
+
+output "nat_eips" {
+  value = aws_eip.nateip.*.id
+}
+
+output "nat_eips_public_ips" {
+  value = aws_eip.nateip.*.public_ip
+}
+
+output "natgw_ids" {
+  value = aws_nat_gateway.natgw.*.id
+}
+
+output "vpn_gateway_id" {
+  value = aws_vpn_gateway.vpn_gateway.id
+}
+
+
+##### Routing #####
+output "public_route_table_ids" {
+  value = aws_route_table.public.*.id
+}
+
+output "private_route_table_ids" {
+  value = aws_route_table.private.*.id
+}
+
+output "private_route_table_id" {
+  value = aws_default_route_table.default.id
+}
 
 # ##### Security Groups #####
-# output "ssh_sg_id" {
-#   value = "${aws_security_group.ssh_sg.id}"
-# }
+output "ssh_sg_id" {
+  value = aws_security_group.ssh_sg.id
+}
 
-# output "common_sg_ids" {
-#   value = ["${aws_security_group.ssh_sg.id}"]
-# }
+output "common_sg_id" {
+  value = aws_security_group.ssh_sg.id
+}
 
-# output "common_sg_names" {
-#   value = ["${aws_security_group.ssh_sg.name}"]
-# }
+output "common_sg_name" {
+  value = aws_security_group.ssh_sg.name
+}
 
-# output "rdp_sg_id" {
-#   value = "${aws_security_group.rdp_sg.id}"
-# }
+output "rdp_sg_id" {
+  value = aws_security_group.rdp_sg.id
+}
 
