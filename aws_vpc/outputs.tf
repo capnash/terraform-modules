@@ -28,101 +28,101 @@ output vpc_default_route_table_id {
 }
 
 ##### Subnets #####
-output "public_subnets" {
+output public_subnets {
   value = aws_subnet.public_cidr.*.id
 }
 
-output "private_subnets" {
+output private_subnets {
   value = aws_subnet.private_cidr.*.id
 }
 
-output "rds_subnets" {
+output rds_subnets {
   value = aws_subnet.rds_cidr.*.id
 }
 
-output "elasticache_subnets" {
+output elasticache_subnets {
   value = aws_subnet.elasticache_cidr.*.id
 }
 
-output "rds_subnet_group_name" {
+output rds_subnet_group_name {
   value = aws_db_subnet_group.rds_cidr.*.name
 }
 
-output "rds_subnet_group_id" {
+output rds_subnet_group_id {
   value = aws_db_subnet_group.rds_cidr.*.id
 }
 
-output "rds_subnet_group_arn" {
+output rds_subnet_group_arn {
   value = aws_db_subnet_group.rds_cidr.*.arn
 }
 
-output "elasticache_subnet_group_name" {
+output elasticache_subnet_group_name {
   value = aws_elasticache_subnet_group.elasticache_cidr.*.name
 }
 
-output "elasticache_subnet_group_id" {
+output elasticache_subnet_group_id {
   value = aws_elasticache_subnet_group.elasticache_cidr.*.id
 }
 
 
 ##### Endpoints and Gateways #####
-output "igw_id" {
+output igw_id {
   value = aws_internet_gateway.igw.id
 }
 
-output "s3_endpoint_id" {
+output s3_endpoint_id {
   value = aws_vpc_endpoint.ep.id
 }
 
-output "s3_endpoint_arn" {
+output s3_endpoint_arn {
   value = aws_vpc_endpoint.ep.arn
 }
 
 
-output "nat_eips" {
+output nat_eips {
   value = aws_eip.nateip.*.id
 }
 
-output "nat_eips_public_ips" {
+output nat_eips_public_ips {
   value = aws_eip.nateip.*.public_ip
 }
 
-output "natgw_ids" {
+output natgw_ids {
   value = aws_nat_gateway.natgw.*.id
 }
 
-output "vpn_gateway_id" {
+output vpn_gateway_id {
   value = aws_vpn_gateway.vpn_gateway.id
 }
 
 
 ##### Routing #####
-output "public_route_table_ids" {
+output public_route_table_ids {
   value = aws_route_table.public.*.id
 }
 
-output "private_route_table_ids" {
+output private_route_table_ids {
   value = aws_route_table.private.*.id
 }
 
-output "private_route_table_id" {
+output private_route_table_id {
   value = aws_default_route_table.default.id
 }
 
 # ##### Security Groups #####
-output "ssh_sg_id" {
+output ssh_sg_id {
   value = aws_security_group.ssh_sg.id
 }
 
-output "common_sg_id" {
+output common_sg_id {
   value = aws_security_group.ssh_sg.id
 }
 
-output "common_sg_name" {
+output common_sg_name {
   value = aws_security_group.ssh_sg.name
 }
 
-output "rdp_sg_id" {
+output rdp_sg_id {
   value = aws_security_group.rdp_sg.id
 }
 
