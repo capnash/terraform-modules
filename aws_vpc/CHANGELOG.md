@@ -1,3 +1,8 @@
+## 1.0.0
+
+  - Upgraded Terraform version
+  - Removed old stuff
+  - Added Tags to everything
 ## 0.0.8
 
   - Moved Gateways from VPN

@@ -1,7 +1,5 @@
-# New way of applying subnets through cidr instead of cidr list
-# the resources then will cut ip up by the number of availability zones
 resource "aws_subnet" "public_cidr" {
-  count             = var.public_subnets_cidr != "0.0.0.0/0" ? length(data.aws_availability_zones.all.names) : 0
+  count             = length(data.aws_availability_zones.all.names)
 
   vpc_id            = aws_vpc.vpc.id
   cidr_block        = cidrsubnet(var.public_subnets_cidr, 2, count.index)
@@ -12,7 +10,7 @@ resource "aws_subnet" "public_cidr" {
 }
 
 resource "aws_subnet" "private_cidr" {
-  count             = var.public_subnets_cidr != "0.0.0.0/0" ? length(data.aws_availability_zones.all.names) : 0
+  count             = length(data.aws_availability_zones.all.names)
 
   vpc_id            = aws_vpc.vpc.id
   cidr_block        = cidrsubnet(var.private_subnets_cidr, 2, count.index)
@@ -21,7 +19,7 @@ resource "aws_subnet" "private_cidr" {
 }
 
 resource "aws_subnet" "rds_cidr" {
-  count             = var.public_subnets_cidr != "0.0.0.0/0" ? length(data.aws_availability_zones.all.names) : 0
+  count             = length(data.aws_availability_zones.all.names)
 
   vpc_id            = aws_vpc.vpc.id
   cidr_block        = cidrsubnet(var.rds_subnets_cidr, 2, count.index)
@@ -30,7 +28,7 @@ resource "aws_subnet" "rds_cidr" {
 }
 
 resource "aws_subnet" "elasticache_cidr" {
-  count             = var.public_subnets_cidr != "0.0.0.0/0" ? length(data.aws_availability_zones.all.names) : 0
+  count             = length(data.aws_availability_zones.all.names)
 
   vpc_id            = aws_vpc.vpc.id
   cidr_block        = cidrsubnet(var.elasticache_subnets_cidr, 2, count.index)
@@ -39,67 +37,14 @@ resource "aws_subnet" "elasticache_cidr" {
 }
 
 resource "aws_db_subnet_group" "rds_cidr" {
-  count       = var.public_subnets_cidr != "0.0.0.0/0" ? 1 : 0
   name        = "${var.name}-rds-subnet-group"
   description = "Database subnet groups for ${var.name}"
-  subnet_ids  = [aws_subnet.rds_cidr.*.id]
+  subnet_ids  = aws_subnet.rds_cidr.*.id
   tags        = merge(var.tags, map("Name", format("%s-rds-subnet-group", var.name)))
 }
 
 resource "aws_elasticache_subnet_group" "elasticache_cidr" {    
-  count       = var.public_subnets_cidr != "0.0.0.0/0" ? 1 : 0
   name        = "${var.name}-elasticache-subnet-group"
   description = "elasticache subnet groups for ${var.name}"  
-  subnet_ids  = [aws_subnet.elasticache_cidr.*.id]
-}
-
-
-# keep these ones for compatibilty
-resource "aws_subnet" "public" {
-  vpc_id            = aws_vpc.vpc.id
-  cidr_block        = var.public_subnets[count.index]
-  availability_zone = element(data.aws_availability_zones.all.names, count.index)
-  count             = length(var.public_subnets)
-  tags              = merge(var.tags, var.public_subnet_tags, map("Name", format("%s-subnet-public-%s", var.name, substr(element(data.aws_availability_zones.all.names, count.index), -2,-1) )))
-
-  map_public_ip_on_launch = var.map_public_ip_on_launch
-}
-
-resource "aws_subnet" "private" {
-  vpc_id            = aws_vpc.vpc.id
-  cidr_block        = var.private_subnets[count.index]
-  availability_zone = element(data.aws_availability_zones.all.names, count.index)
-  count             = length(var.private_subnets)
-  tags              = merge(var.tags, var.private_subnet_tags, map("Name", format("%s-subnet-private-%s", var.name, substr(element(data.aws_availability_zones.all.names, count.index), -2,-1) )))
-}
-
-resource "aws_subnet" "rds" {
-  vpc_id            = aws_vpc.vpc.id
-  cidr_block        = var.rds_subnets[count.index]
-  availability_zone = element(data.aws_availability_zones.all.names, count.index)
-  count             = length(var.rds_subnets)
-  tags              = merge(var.tags, var.rds_subnet_tags, map("Name", format("%s-subnet-rds-%s", var.name, substr(element(data.aws_availability_zones.all.names, count.index), -2,-1) )))
-}
-
-resource "aws_db_subnet_group" "rds" {
-  name        = "${var.name}-rds-subnet-group"
-  description = "Database subnet groups for ${var.name}"
-  subnet_ids  = [aws_subnet.rds.*.id]
-  tags        = merge(var.tags, map("Name", format("%s-rds-subnet-group", var.name)))
-  count       = length(var.rds_subnets) > 0 ? 1 : 0
-}
-
-resource "aws_subnet" "elasticache" {
-  vpc_id            = aws_vpc.vpc.id
-  cidr_block        = var.elasticache_subnets[count.index]
-  availability_zone = element(data.aws_availability_zones.all.names, count.index)
-  count             = length(var.elasticache_subnets)
-  tags              = merge(var.tags, var.elasticache_subnet_tags, map("Name", format("%s-subnet-elasticache-%s", var.name, substr(element(data.aws_availability_zones.all.names, count.index), -2,-1) )))
-}
-
-resource "aws_elasticache_subnet_group" "elasticache" {    
-  name        = "${var.name}-elasticache-subnet-group"
-  description = "elasticache subnet groups for ${var.name}"  
-  subnet_ids  = [aws_subnet.elasticache.*.id]
-  count       = length(var.elasticache_subnets) > 0 ? 1 : 0
+  subnet_ids  = aws_subnet.elasticache_cidr.*.id
 }
