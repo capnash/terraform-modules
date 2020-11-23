@@ -3,7 +3,7 @@ resource "aws_security_group_rule" "egress_ad" {
 
   type        = "egress"
   protocol    = "all"
-  cidr_blocks = element(values(var.on_perm_dns_ips), count.index )
+  cidr_blocks = [element(values(var.on_perm_dns_ips), count.index )]
   from_port   = "0"
   to_port     = "65535"
   description = element(keys(var.on_perm_dns_ips), count.index )
