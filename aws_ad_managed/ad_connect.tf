@@ -12,5 +12,5 @@ resource "aws_directory_service_directory" "ad" {
     subnet_ids = var.subnets
   }
 
-  tags = "${merge(var.tags, map("Name", format("%s-ad", var.ad_domain)))}"
+  tags = merge(var.tags, map("Name", format("%s-ad", var.ad_domain)))
 }

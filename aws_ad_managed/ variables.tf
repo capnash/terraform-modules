@@ -34,7 +34,7 @@ variable "ad_password" {
 
 variable "subnets" {
   description = "subnets to install ad connect into"
-  type        = "list"
+  type        = list
 }
 
 variable "vpc_id" {
