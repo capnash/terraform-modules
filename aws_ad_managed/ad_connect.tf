@@ -13,4 +13,9 @@ resource "aws_directory_service_directory" "ad" {
   }
 
   tags = merge(var.tags, map("Name", format("%s-ad", var.ad_domain)))
+
+  # Temp till migration is completed
+  lifecycle {
+    ignore_changes        = [dns_ip_addresses, password, vpc_settings]
+  }
 }
