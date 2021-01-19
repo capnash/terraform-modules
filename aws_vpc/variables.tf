@@ -76,7 +76,7 @@ variable "dhcp_set_id" {
 
 ##### Subnet #####
 variable "logical_subnets" {
-  description = "This represents the 'newbits' in the cidrsubnet function that calculates the subnet sizes.  Default is good for when you only have 3 az's"
+  description = "This represents the 'newbits' in the cidrsubnet function that calculates the subnet sizes.  Default is good for when you only have 3 az's.  This count starts from 0, so for 4 subnets you want 3 as your value"
   type        = string
   default     = 2
 }
