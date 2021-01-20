@@ -182,7 +182,6 @@ variable "ebs_optimized" {
 variable "aws_ami" {
   description = "AMI ID to use in luanch config"
   type        = string
-  # default     = "ami-acb020d5"
 }
 
 variable "instance_monitoring" {
@@ -259,7 +258,7 @@ variable "lambda_kms_key_arn" {
 }
 
 variable "slack_channel" {
-  description = "The channel of slack to send notifications to."
+  description = "The channel of slack to send notifications to eg #devops."
   type        = string
 }
 
