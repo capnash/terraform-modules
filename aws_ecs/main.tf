@@ -12,12 +12,12 @@ data "aws_vpc_endpoint_service" "s3" {
 
 data "archive_file" "slack_notifications" {
   type        = "zip"
-  source_file = "${path.module}/files/slack_notification/snsToSlack.js}"
-  output_path = "${path.module}/files/slack_notification/snsToSlack.js.zip}"
+  source_file = "files/slack_notification/snsToSlack.js"
+  output_path = "files/slack_notification/snsToSlack.js.zip"
 }
 
 data "archive_file" "ecs_lifecycle_function" {
   type        = "zip"
-  source_file = "${path.module}/files/ecs_lifecycle_function/index.py}"
-  output_path = "${path.module}/files/ecs_lifecycle_function/index.py.zip}"
+  source_file = "files/ecs_lifecycle_function/index.py"
+  output_path = "files/ecs_lifecycle_function/index.py.zip"
 }
