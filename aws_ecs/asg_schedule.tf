@@ -60,7 +60,7 @@ resource "aws_lambda_function" "ecs_lifecycle_function" {
   
 }
 
-resource "aws_lambda_permission" "allow_sns" {
+resource "aws_lambda_permission" "ecs_lifecycle_allow_sns" {
   action         = "lambda:InvokeFunction"
   function_name  = aws_lambda_function.ecs_lifecycle_function.function_name
   principal      = "sns.amazonaws.com"

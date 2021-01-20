@@ -254,31 +254,31 @@ resource "aws_iam_role_policy_attachment" "ecs_execution_policy_attach2" {
 ## Outputs ##
 #############
 output "iam_instance_profile_ecs_id" {
-  value = "${aws_iam_instance_profile.profile.id}"
+  value = aws_iam_instance_profile.profile.id
 }
 
 output "iam_instance_profile_ecs_name" {
-  value = "${aws_iam_instance_profile.profile.name}"
+  value = aws_iam_instance_profile.profile.name
 }
 
 output "am_instance_profile_ecs_arn" {
-  value = "${aws_iam_instance_profile.profile.arn}"
+  value = aws_iam_instance_profile.profile.arn
 }
 
 output "iam_role_ecs_name" {
-  value = "${aws_iam_role.role.name}"
+  value = aws_iam_role.role.name
 }
 
 output "iam_role_ecs_arn" {
-  value = "${aws_iam_role.role.arn}"
+  value = aws_iam_role.role.arn
 }
 
 output "iam_role_ecs_service_role_name" {
-  value = "${aws_iam_role.ecs_service_role.name}"
+  value = aws_iam_role.ecs_service_role.name
 }
 
 output "iam_role_ecs_service_role_arn" {
-  value = "${aws_iam_role.ecs_service_role.arn}"
+  value = aws_iam_role.ecs_service_role.arn
 }
 
 output "iam_policy_sqs_policy_arn" {
@@ -290,19 +290,19 @@ output "iam_policy_sqs_policy_id" {
 }
 
 output "iam_role_notifications_role_name" {
-  value = "${aws_iam_role.notifications_role.name}"
+  value = aws_iam_role.notifications_role.name
 }
 
 output "iam_role_notifications_role_arn" {
-  value = "${aws_iam_role.notifications_role.arn}"
+  value = aws_iam_role.notifications_role.arn
 }
 
 output "iam_role_lambda_execution_role_name" {
-  value = "${aws_iam_role.lambda_execution_role.name}"
+  value = aws_iam_role.lambda_execution_role.name
 }
 
 output "iam_role_lambda_execution_role_arn" {
-  value = "${aws_iam_role.lambda_execution_role.arn}"
+  value = aws_iam_role.lambda_execution_role.arn
 }
 
 output "iam_policy_lambda_execution_policy_arn" {
@@ -314,17 +314,17 @@ output "iam_policy_lambda_execution_policy_id" {
 }
 
 output "iam_role_ecs_autoscale_role_name" {
-  value = "${aws_iam_role.ecs_autoscale_role.name}"
+  value = aws_iam_role.ecs_autoscale_role.name
 }
 
 output "iam_role_ecs_autoscale_role_arn" {
-  value = "${aws_iam_role.ecs_autoscale_role.arn}"
+  value = aws_iam_role.ecs_autoscale_role.arn
 }
 
 output "iam_role_ecs_execution_role_name" {
-  value = "${aws_iam_role.ecs_execution_role.name}"
+  value = aws_iam_role.ecs_execution_role.name
 }
 
 output "iam_role_ecs_execution_role_arn" {
-  value = "${aws_iam_role.ecs_execution_role.arn}"
+  value = aws_iam_role.ecs_execution_role.arn
 }

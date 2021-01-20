@@ -52,7 +52,7 @@ resource "aws_lambda_function" "ecs_sns_slack_function" {
   
 }
 
-resource "aws_lambda_permission" "allow_sns" {
+resource "aws_lambda_permission" "ecs_sns_slack_allow_sns" {
   action         = "lambda:InvokeFunction"
   function_name  = aws_lambda_function.ecs_sns_slack_function.function_name
   principal      = "sns.amazonaws.com"
