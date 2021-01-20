@@ -37,7 +37,7 @@ resource "aws_autoscaling_group" "asg" {
   }
   tag {
     key                 = "terraform"
-    value               = var.tags["terraform_version"]
+    value               = var.tags["terraform"]
     propagate_at_launch = true
   }
   tag {
