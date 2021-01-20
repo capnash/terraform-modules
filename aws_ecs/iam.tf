@@ -24,12 +24,12 @@ resource "aws_iam_role" "role" {
 EOF
 }
 
-resource "aws_iam_role_policy_attachment" "ecs-policy-attach" {
+resource "aws_iam_role_policy_attachment" "ecs_policy_attach" {
     role       = aws_iam_role.role.name
     policy_arn = "arn:aws:iam::aws:policy/service-role/AmazonEC2ContainerServiceforEC2Role"
 }
 
-resource "aws_iam_role_policy_attachment" "ecs-SSMpolicy-attach" {
+resource "aws_iam_role_policy_attachment" "ecs_ssm_policy_attach" {
     role       = aws_iam_role.role.name
     policy_arn = "arn:aws:iam::aws:policy/service-role/AmazonEC2RoleForSSM"
 }
@@ -39,7 +39,7 @@ resource "aws_iam_role_policy_attachment" "ecs_ec2_cloudwatch_role" {
   policy_arn = "arn:aws:iam::aws:policy/CloudWatchLogsFullAccess"
 }
 
-resource "aws_iam_role" "ecsServiceRole" {
+resource "aws_iam_role" "ecs_service_role" {
   name  = var.ecs_service_role_name
 
   assume_role_policy = <<EOF
@@ -59,13 +59,13 @@ resource "aws_iam_role" "ecsServiceRole" {
 EOF
 }
    
-resource "aws_iam_role_policy_attachment" "ecsServiceRole" {
+resource "aws_iam_role_policy_attachment" "ecs_service_role" {
   policy_arn = "arn:aws:iam::aws:policy/service-role/AmazonEC2ContainerServiceRole"
-  role       = aws_iam_role.ecsServiceRole.name
+  role       = aws_iam_role.ecs_service_role.name
 }
   
-resource "aws_iam_policy" "SQS_policy" {
-  name        = "${var.environment}-aws-ecs-SQSpolicy"
+resource "aws_iam_policy" "sqs_policy" {
+  name        = "${var.environment}-aws-ecs-sqs-policy"
   description = "Policy to access SQS"
   
   policy = <<EOF
@@ -99,7 +99,7 @@ EOF
 
 resource "aws_iam_role_policy_attachment" "sqs_access_role_attachment" {
     role       = aws_iam_role.role.name
-    policy_arn = aws_iam_policy.SQS_policy.arn
+    policy_arn = aws_iam_policy.sqs_policy.arn
 }
 
 resource "aws_iam_role" "notifications_role" {
@@ -253,62 +253,78 @@ resource "aws_iam_role_policy_attachment" "ecs_execution_policy_attach2" {
 #############
 ## Outputs ##
 #############
-output "ecs_instance_profile_id" {
+output "iam_instance_profile_ecs_id" {
   value = "${aws_iam_instance_profile.profile.id}"
 }
 
-output "ecs_instance_profile_name" {
+output "iam_instance_profile_ecs_name" {
   value = "${aws_iam_instance_profile.profile.name}"
 }
 
-output "ecs_instance_profile_arn" {
+output "am_instance_profile_ecs_arn" {
   value = "${aws_iam_instance_profile.profile.arn}"
 }
 
-output "ecs_role_name" {
+output "iam_role_ecs_name" {
   value = "${aws_iam_role.role.name}"
 }
 
-output "ecs_role_arn" {
+output "iam_role_ecs_arn" {
   value = "${aws_iam_role.role.arn}"
 }
 
-output "ecs_execution_role_name" {
-  value = "${aws_iam_role.ecs_execution_role.name}"
+output "iam_role_ecs_service_role_name" {
+  value = "${aws_iam_role.ecs_service_role.name}"
 }
 
-output "ecs_execution_role_arn" {
-  value = "${aws_iam_role.ecs_execution_role.arn}"
+output "iam_role_ecs_service_role_arn" {
+  value = "${aws_iam_role.ecs_service_role.arn}"
 }
 
-output "ecs_autoscale_role_name" {
-  value = "${aws_iam_role.ecs_autoscale_role.name}"
+output "iam_policy_sqs_policy_arn" {
+  value = aws_iam_policy.sqs_policy.arn
 }
 
-output "ecs_autoscale_role_arn" {
-  value = "${aws_iam_role.ecs_autoscale_role.arn}"
+output "iam_policy_sqs_policy_id" {
+  value = aws_iam_policy.sqs_policy.id
 }
 
-output "ecsServiceRole_name" {
-  value = "${aws_iam_role.ecsServiceRole.name}"
-}
-
-output "ecsServiceRole_arn" {
-  value = "${aws_iam_role.ecsServiceRole.arn}"
-}
-
-output "notifications_role_name" {
+output "iam_role_notifications_role_name" {
   value = "${aws_iam_role.notifications_role.name}"
 }
 
-output "notifications_role_arn" {
+output "iam_role_notifications_role_arn" {
   value = "${aws_iam_role.notifications_role.arn}"
 }
 
-output "lambda_execution_role_name" {
+output "iam_role_lambda_execution_role_name" {
   value = "${aws_iam_role.lambda_execution_role.name}"
 }
 
-output "lambda_execution_role_arn" {
+output "iam_role_lambda_execution_role_arn" {
   value = "${aws_iam_role.lambda_execution_role.arn}"
+}
+
+output "iam_policy_lambda_execution_policy_arn" {
+  value = aws_iam_policy.lambda_execution_role_policy.arn
+}
+
+output "iam_policy_lambda_execution_policy_id" {
+  value = aws_iam_policy.lambda_execution_role_policy.id
+}
+
+output "iam_role_ecs_autoscale_role_name" {
+  value = "${aws_iam_role.ecs_autoscale_role.name}"
+}
+
+output "iam_role_ecs_autoscale_role_arn" {
+  value = "${aws_iam_role.ecs_autoscale_role.arn}"
+}
+
+output "iam_role_ecs_execution_role_name" {
+  value = "${aws_iam_role.ecs_execution_role.name}"
+}
+
+output "iam_role_ecs_execution_role_arn" {
+  value = "${aws_iam_role.ecs_execution_role.arn}"
 }

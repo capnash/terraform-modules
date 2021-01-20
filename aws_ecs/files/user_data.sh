@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Timezone
-ln -fs /usr/share/zoneinfo/Europe/London /etc/localtime
+ln -fs ${time_zone_path} /etc/localtime
 
 #Using script from http://docs.aws.amazon.com/AmazonECS/latest/developerguide/using_cloudwatch_logs.html
 # Install awslogs and the jq JSON parser

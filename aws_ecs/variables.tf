@@ -4,15 +4,9 @@ variable "tags" {
   type        = map
 }
 
-variable "name" {
-  description = "Name to be used on all the resources as identifier"
+variable "environment" {
+  description = "Environment that service is being built in"
   type        = string
-}
-
-variable "time_zone_path" {
-  description = "path in linux to correct time zone"
-  type        = string
-  default     = "/usr/share/zoneinfo/Europe/London"
 }
 
 ##### Autoscaling #####
@@ -178,84 +172,84 @@ variable "mem_scale_in_threshold" {
   default     = 70
 }
 
-# variable "memory_low_alarm" {
-#   description = "Threshold for low memory utilization"
-#   type        = string
-#   default     = 40
-# }
+##### Launch Config #####
+variable "ebs_optimized" {
+  description = " If true, the launched EC2 instance will be EBS-optimized"
+  type        = bool
+  default     = false
+}
 
-# variable "memory_high_alarm" {
-#   description = "Threshold for high memory utilization"
-#   type        = string
-#   default     = 70
-# }
+variable "aws_ami" {
+  description = "AMI ID to use in luanch config"
+  type        = string
+  # default     = "ami-acb020d5"
+}
 
-# ##### Launch Config #####
-# variable "ebs_optimized" {
-#   description = " If true, the launched EC2 instance will be EBS-optimized"
-#   default     = false
-# }
+variable "instance_monitoring" {
+  description = "Enables/disables detailed monitoring. This is enabled by default."
+  type        = bool
+  default     = true
+}
 
-# variable "aws_ami" {
-#   description = "AMI ID to use in luanch config"
-#   default     = "ami-acb020d5"
-# }
+variable "instance_type" {
+  description = "The size of the instance to spin up"
+  type        = string
+}
 
-# variable "instance_monitoring" {
-#   description = "Enables/disables detailed monitoring. This is enabled by default."
-#   default     = true
-# }
+variable "other_security_groups" {
+  description = "If you require any other sg attached, provide list of ID's"
+  type        = list
+  default     = [""]
+}
 
-# variable "instance_type" {
-#   description = "The size of the instance to spin up"
-#   type        = "string"
-# }
+variable "key_name" {
+  description = "SSH key for instances"
+  type        = string
+}
 
-# variable "other_security_groups" {
-#   description = "If you require any other sg attached, provide list of ID's"
-#   default     = [""]
-# }
+variable "volume_type" {
+  description  = "The type of volume"
+  type        = string
+  default     = "gp2"
+}
 
-# variable "key_name" {
-#   description = "SSH key for instances"
-#   type        = "string"
-#   default     = ""
-# }
+variable "volume_size" {
+  description = "The size of the volume in gigabytes"
+  type        = string
+  default     = 30
+}
 
-# variable "volume_type" {
-#   description  = "The type of volume"
-#   type        = "string"
-#   default     = "gp2"
-# }
-
-# variable "volume_size" {
-#   description = "The size of the volume in gigabytes"
-#   type        = "string"
-#   default     = "30"
-# }
-
-# variable "delete_on_termination" {
-#   description = "Whether the volume should be destroyed on instance termination"
-#   type        = "string"
-#   default     = "true"
-# }
+variable "delete_on_termination" {
+  description = "Whether the volume should be destroyed on instance termination"
+  type        = bool
+  default     = true
+}
 
 # #### Main.tf #####
 
-# variable "ecs_config" {
-#   default     = "echo '' > /etc/ecs/ecs.config"
-#   description = "Specify ecs configuration or get it from S3. Example: aws s3 cp s3://some-bucket/ecs.config /etc/ecs/ecs.config"
-# }
+variable "ecs_config" {
+  description = "Specify ecs configuration or get it from S3. Example: aws s3 cp s3://some-bucket/ecs.config /etc/ecs/ecs.config"
+  type        = string
+  default     = "echo '' > /etc/ecs/ecs.config"
+}
 
-# variable "ecs_logging" {
-#   default     = "[\"json-file\",\"awslogs\",\"splunk\"]"
-#   description = "Adding logging option to ECS that the Docker containers can use. It is possible to add fluentd as well"
-# }
+variable "ecs_logging" {
+  description = "Adding logging option to ECS that the Docker containers can use. It is possible to add fluentd as well"
+  type        = string
+  default     = "[\"json-file\",\"awslogs\"]"
+}
 
-# variable "custom_userdata" {
-#   default     = ""
-#   description = "Inject extra command in the instance template to be run on boot"
-# }
+variable "custom_userdata" {
+  description = "Inject extra command in the instance template to be run on boot"
+  type        = string
+  default     = ""
+}
+
+variable "time_zone_path" {
+  description = "path in linux to correct time zone"
+  type        = string
+  default     = "/usr/share/zoneinfo/Europe/London"
+}
 
 # ##### Lambda #####
 
@@ -274,31 +268,20 @@ variable "slack_weebhook_path" {
   type        = string
 }
 
-# ##### Security Groups #####
-# variable "vpc_id" {
-#   description = "The ID of the vpc to add ALB to"
-# }
-
-
-# ##### ALB #####
-# variable "alb_sg_id" {
-#    description = "Security Group ID of the ALB"
-#    type        = "string"
-# }
-
-# ##### IAM #####
-# variable "ecs_service_role_name" {
-#    description = "Name for the Ecs Service Role (only change if you need to override the default name)"
-#    type        = "string"
-#    default     = "ecsServiceRole"
-# }
-
-# variable "prod_account_id"{
-#   description = "Production ID for aws account"
-#   type        = "string"
-# }
-
-variable "environment" {
-  description = "Environment that service is being built in"
+##### Security Groups #####
+variable "vpc_id" {
+  description = "The ID of the vpc to add ALB to"
   type        = string
+}
+
+variable "alb_sg_id" {
+   description = "Security Group ID of the ALB"
+   type        = string
+}
+
+##### IAM #####
+variable "ecs_service_role_name" {
+   description = "Name for the Ecs Service Role (only change if you need to override the default name)"
+   type        = string
+   default     = "ecs_service_role"
 }

@@ -12,7 +12,7 @@ data "template_file" "user_data" {
     ecs_logging       = var.ecs_logging
     cluster_name      = aws_ecs_cluster.cluster.name
     custom_userdata   = var.custom_userdata
-    cloudwatch_prefix = var.name
+    cloudwatch_prefix = "${var.environment}-aws-ecs"
     time_zone_path    = var.time_zone_path
   }
 }

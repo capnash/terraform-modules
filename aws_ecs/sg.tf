@@ -1,8 +1,8 @@
 resource "aws_security_group" "instance" {
-  name        = "${var.name}-sg-instances"
+  name        = "${var.environment}-ecs-sg-instances"
   vpc_id      = var.vpc_id
   description = "Used for ecs sg for ${var.tags["role"]}"
-  tags        = "${merge(var.tags, map("Name", format("%s-sg-instances", var.name)))}"
+  tags        = merge(var.tags, map("Name", "${var.environment}-ecs-sg-instances"))
 
   egress {
     from_port   = 0
@@ -25,14 +25,14 @@ resource "aws_security_group_rule" "alb_to_ecs" {
 #############
 ## Outputs ##
 #############
-output "sg_ecs_instance_id" {
+output "security_group_ecs_id" {
   value = "${aws_security_group.instance.id}"
 }
 
-output "sg_ecs_instance_name" {
+output "security_group_ecs_name" {
   value = "${aws_security_group.instance.name}"
 }
 
-output "sg_ecs_instance_arn" {
+output "security_group_ecs_arn" {
   value = "${aws_security_group.instance.arn}"
 }

@@ -66,42 +66,42 @@ resource "aws_cloudwatch_metric_alarm" "cpu_alarm_scale_in" {
 #############
 ## Outputs ##
 #############
-output "cpu_alarm_scale_in_arn" {
+output "cloudwatch_metric_alarm_ecs_cpu_scale_in_arn" {
   value = aws_cloudwatch_metric_alarm.cpu_alarm_scale_in.arn
 }
 
-output "cpu_alarm_scale_in_id" {
+output "cloudwatch_metric_alarm_ecs_cpu_scale_in_id" {
   value = aws_cloudwatch_metric_alarm.cpu_alarm_scale_in.id
 }
 
-output "cpu_alarm_scale_out_arn" {
+output "cloudwatch_metric_alarm_ecs_cpu_scale_out_arn" {
   value = aws_cloudwatch_metric_alarm.cpu_alarm_scale_out.arn
 }
 
-output "cpu_alarm_scale_out_id" {
+output "cloudwatch_metric_alarm_ecs_cpu_scale_out_id" {
   value = aws_cloudwatch_metric_alarm.cpu_alarm_scale_out.id
 }
 
-output "cpu_asg_policy_scale_in_arn" {
+output "autoscaling_policy_ecs_cpu_scale_in_arn" {
   value = aws_autoscaling_policy.cpu_policy_scale_in.arn
 }
 
-output "cpu_asg_policy_scale_in_name" {
+output "autoscaling_policy_ecs_cpu_scale_in_name" {
   value = aws_autoscaling_policy.cpu_policy_scale_in.name
 }
 
-output "cpu_asg_policy_scale_in_policy_type" {
+output "autoscaling_policy_ecs_cpu_scale_in_policy_type" {
   value = aws_autoscaling_policy.cpu_policy_scale_in.policy_type
 }
 
-output "cpu_asg_policy_scale_out_arn" {
+output "autoscaling_policy_ecs_cpu_scale_out_arn" {
   value = aws_autoscaling_policy.cpu_policy_scale_out.arn
 }
 
-output "cpu_asg_policy_scale_out_name" {
+output "autoscaling_policy_ecs_cpu_scale_out_name" {
   value = aws_autoscaling_policy.cpu_policy_scale_out.name
 }
 
-output "cpu_asg_policy_scale_out_policy_type" {
+output "autoscaling_policy_ecs_cpu_scale_out_policy_type" {
   value = aws_autoscaling_policy.cpu_policy_scale_out.policy_type
 }

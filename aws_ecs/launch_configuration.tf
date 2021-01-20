@@ -6,7 +6,7 @@ resource "aws_launch_configuration" "launch" {
   
   enable_monitoring     = var.instance_monitoring
   instance_type         = var.instance_type
-  security_groups       = ["${compact(concat(list("${aws_security_group.instance.id}"), "${var.other_security_groups}"))}"]
+  security_groups       = [compact(concat(list(aws_security_group.instance.id), var.other_security_groups))]
   
   name_prefix           = var.name
   key_name              = var.key_name
@@ -32,10 +32,14 @@ resource "aws_launch_configuration" "launch" {
 #############
 ## Outputs ##
 #############
-output "lc_id" {
+output "launch_configuration_ecs_id" {
   value = "${aws_launch_configuration.launch.id}"
 }
 
-output "lc_name" {
+output "launch_configuration_ecs_name" {
   value = "${aws_launch_configuration.launch.name}"
+}
+
+output "launch_configuration_ecs_arn" {
+  value = "${aws_launch_configuration.launch.arn}"
 }
