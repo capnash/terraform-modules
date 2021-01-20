@@ -13,8 +13,9 @@ resource "aws_launch_configuration" "launch" {
 
   associate_public_ip_address = false
 
-  user_data            = data.template_file.user_data.rendered
-
+  #user_data            = data.template_file.user_data.rendered
+  user_data            = templatefile("${path.module}/files/user_data.sh", { ecs_config = var.ecs_config, ecs_logging = var.ecs_logging, cluster_name = aws_ecs_cluster.cluster.name, custom_userdata = var.custom_userdata, cloudwatch_prefix = "${var.environment}-aws-ecs", time_zone_path = var.time_zone_path }) 
+  
   root_block_device {
     volume_type           = var.volume_type
     volume_size           = var.volume_size

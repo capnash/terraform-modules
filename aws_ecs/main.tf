@@ -4,18 +4,11 @@ data "aws_vpc_endpoint_service" "s3" {
   service = "s3"
 }
 
-data "template_file" "user_data" {
-  template = file("./files/user_data.sh")
+# data "template_file" "user_data" {
+#   template = file("./files/user_data.sh")
 
-  vars = {
-    ecs_config        = var.ecs_config
-    ecs_logging       = var.ecs_logging
-    cluster_name      = aws_ecs_cluster.cluster.name
-    custom_userdata   = var.custom_userdata
-    cloudwatch_prefix = "${var.environment}-aws-ecs"
-    time_zone_path    = var.time_zone_path
-  }
-}
+#   vars = 
+# }
 
 data "archive_file" "slack_notifications" {
   type        = "zip"
