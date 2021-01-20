@@ -8,7 +8,7 @@ resource "aws_launch_configuration" "launch" {
   instance_type         = var.instance_type
   security_groups       = [compact(concat(list(aws_security_group.instance.id), var.other_security_groups))]
   
-  name_prefix           = var.name
+  name_prefix           = "${var.environment}-aws-ecs-lc-"
   key_name              = var.key_name
 
   associate_public_ip_address = false

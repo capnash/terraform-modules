@@ -1,14 +1,15 @@
 resource "aws_lb" "alb" {
   name            = "${var.environment}-alb-${var.tags["role"]}"
   internal        = var.internal
-  subnets         = [var.public_subnets]
+  subnets         = var.public_subnets
   idle_timeout    = var.idle_timeout
 
   drop_invalid_header_fields = var.drop_headers
   enable_http2               = var.enable_http2
 
 
-  security_groups = [concat(list(aws_security_group.alb.id), var.xtra_sg)]
+  security_groups = [compact(concat(list(aws_security_group.alb.id), var.xtra_sg))]
+
   enable_deletion_protection = false
 
   access_logs {
