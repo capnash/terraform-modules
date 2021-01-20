@@ -13,7 +13,7 @@ resource "aws_autoscaling_group" "asg" {
   
   launch_configuration      = aws_launch_configuration.launch.name
   availability_zones        = [data.aws_availability_zones.all.names]
-  vpc_zone_identifier       = [var.private_subnets]
+  vpc_zone_identifier       = var.private_subnets
 
   tag {
     key                 = "Name"
