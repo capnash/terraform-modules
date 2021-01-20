@@ -8,7 +8,8 @@ resource "aws_lb" "alb" {
   enable_http2               = var.enable_http2
 
 
-  security_groups = [compact(concat(list(aws_security_group.alb.id), var.xtra_sg))]
+  #security_groups = [compact(concat(list(aws_security_group.alb.id), var.xtra_sg))]
+  security_groups = [aws_security_group.alb.id]
 
   enable_deletion_protection = false
 

@@ -6,7 +6,8 @@ resource "aws_launch_configuration" "launch" {
   
   enable_monitoring     = var.instance_monitoring
   instance_type         = var.instance_type
-  security_groups       = [compact(concat(list(aws_security_group.instance.id), var.other_security_groups))]
+  # security_groups       = [compact(concat(list(aws_security_group.instance.id), var.other_security_groups))]
+  security_groups       = [aws_security_group.instance.id]
   
   name_prefix           = "${var.environment}-aws-ecs-lc-"
   key_name              = var.key_name
