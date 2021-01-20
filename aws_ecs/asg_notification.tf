@@ -31,7 +31,7 @@ resource "aws_lambda_function" "ecs_sns_slack_function" {
   role             = aws_iam_role.lambda_execution_role.arn
   handler          = "snsToSlack.handler"
   source_code_hash = data.archive_file.slack_notifications.output_base64sha256
-  runtime          = "Node.js 12.x"
+  runtime          = "nodejs12.x"
   timeout          = "10"
 
   kms_key_arn      = var.lambda_kms_key_arn

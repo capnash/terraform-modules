@@ -6,8 +6,8 @@ resource "aws_lb_target_group" "http" {
   vpc_id   = var.vpc_id
 
 
-  registration_delay  = var.http_deregistration_delay
-  target_type         = "instance"
+  deregistration_delay = var.http_deregistration_delay
+  target_type          = "instance"
 
 
   stickiness {
