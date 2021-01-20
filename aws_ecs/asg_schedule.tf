@@ -147,9 +147,9 @@ output "autoscaling_policy_schedule_out_policy_type" {
 }
 
 output "autoscaling_schedule_out_arn" {
-  value = aws_autoscaling_schedule.scaleout.arn
+  value = join(",", aws_autoscaling_schedule.scaleout.*.arn)
 }
 
 output "autoscaling_schedule_in_arn" {
-  value = aws_autoscaling_schedule.scalein.arn
+  value = join(",", aws_autoscaling_schedule.scalein.*.arn)
 }
