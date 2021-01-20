@@ -62,46 +62,30 @@ resource "aws_lambda_permission" "allow_sns" {
 #############
 ## Outputs ##
 #############
-output "lambda_ecs_lifecycle_function_arn" {
-   value = "${aws_lambda_function.ecs_lifecycle_function.arn}"
-}
-
-output "lambda_ecs_lifecycle_function_qualified_arn" {
-   value = "${aws_lambda_function.ecs_lifecycle_function.qualified_arn}"
-}
-
-output "lambda_ecs_lifecycle_function_invoke_arn" {
-   value = "${aws_lambda_function.ecs_lifecycle_function.invoke_arn}"
-}
-
-output "lambda_ecs_lifecycle_function_version" {
-   value = "${aws_lambda_function.ecs_lifecycle_function.version}"
-}
-
-output "ecs_asg_notifications_group_names" {
+output "autoscaling_notification_ecs_lifecycle_group_names" {
   value = aws_autoscaling_notification.notifications.group_names
 }
 
-output "ecs_asg_notifications_notifications" {
+output "autoscaling_notification_ecs_lifecycle_notifications" {
   value = aws_autoscaling_notification.notifications.notifications
 }
 
-output "ecs_asg_notifications_topic_arn" {
+output "autoscaling_notification_ecs_lifecycle_topic_arn" {
   value = aws_autoscaling_notification.notifications.topic_arn
 }
 
-output "ecs_notification_sns_arn" {
+output "sns_topic_ecs_notifications_arn" {
   value = aws_sns_topic.ecs_notifications.arn
 }
 
-output "ecs_notification_sns_id" {
+output "sns_topic_ecs_notifications_id" {
   value = aws_sns_topic.ecs_notifications.id
 }
 
-output "aws_sns_slack_subscription_id" {
+output "sns_topic_subscription_slack_id" {
   value = aws_sns_topic_subscription.ecs_slack_notifications.id
 }
 
-output "aws_sns_slack_subscription_arn" {
+output "sns_topic_subscription_slack_arn" {
   value = aws_sns_topic_subscription.ecs_slack_notifications.arn
 }

@@ -66,14 +66,14 @@ resource "aws_autoscaling_lifecycle_hook" "ecs_terminating_hook" {
 #############
 ## Outputs ##
 #############
-output "asg_id" {
-  value = "${aws_autoscaling_group.asg.id}"
+output "autoscaling_group_ecs_id" {
+  value = aws_autoscaling_group.asg.id
 }
  
-output "asg_arn" {
-  value = "${aws_autoscaling_group.asg.arn}"
+output "autoscaling_group_ecs_arn" {
+  value = aws_autoscaling_group.asg.arn
 }
 
-output "asg_name" {
-  value = "${aws_autoscaling_group.asg.name}"
+output "autoscaling_group_ecs_name" {
+  value = aws_autoscaling_group.asg.name
 }

@@ -82,74 +82,74 @@ resource "aws_sns_topic" "ecs_lifecycle_topic" {
 #############
 ## Outputs ##
 #############
-output "sns_ecs_lifecycle_subscription_id" {
-  value = "${aws_sns_topic_subscription.ecs_lifecycle_subscription.id}"
+output "sns_topic_subscription_lifecycle_id" {
+  value = aws_sns_topic_subscription.ecs_lifecycle_subscription.id
 }
 
-output "sns_ecs_lifecycle_subscription_topic_arn" {
-  value = "${aws_sns_topic_subscription.ecs_lifecycle_subscription.topic_arn}"
+output "sns_topic_subscription_lifecycle_topic_arn" {
+  value = aws_sns_topic_subscription.ecs_lifecycle_subscription.topic_arn
 }
 
-output "sns_ecs_lifecycle_subscription_endpoint" {
-  value = "${aws_sns_topic_subscription.ecs_lifecycle_subscription.endpoint}"
+output "sns_topic_subscription_lifecycle_endpoint" {
+  value = aws_sns_topic_subscription.ecs_lifecycle_subscription.endpoint
 }
 
-output "sns_ecs_lifecycle_subscription_arn" {
-  value = "${aws_sns_topic_subscription.ecs_lifecycle_subscription.arn}"
+output "sns_topic_subscription_lifecycle_arn" {
+  value = aws_sns_topic_subscription.ecs_lifecycle_subscription.arn
 }
 
-output "sns_ecs_lifecycle_topic_id" {
-  value = "${aws_sns_topic.ecs_lifecycle_topic.id}"
+output "sns_topic_ecs_lifecycle_topic_id" {
+  value = aws_sns_topic.ecs_lifecycle_topic.id
 }
 
-output "sns_ecs_lifecycle_topic_arn" {
-  value = "${aws_sns_topic.ecs_lifecycle_topic.arn}"
+output "sns_topic_ecs_lifecycle_topic_arn" {
+  value = aws_sns_topic.ecs_lifecycle_topic.arn
 }
 
-output "lambda_ecs_lifecycle_function_arn" {
-   value = "${aws_lambda_function.ecs_lifecycle_function.arn}"
+output "lambda_function_ecs_lifecycle_arn" {
+   value = aws_lambda_function.ecs_lifecycle_function.arn
 }
 
-output "lambda_ecs_lifecycle_function_qualified_arn" {
-   value = "${aws_lambda_function.ecs_lifecycle_function.qualified_arn}"
+output "lambda_function_ecs_lifecycle_qualified_arn" {
+   value = aws_lambda_function.ecs_lifecycle_function.qualified_arn
 }
 
-output "lambda_ecs_lifecycle_function_invoke_arn" {
-   value = "${aws_lambda_function.ecs_lifecycle_function.invoke_arn}"
+output "lambda_function_ecs_lifecycle_invoke_arn" {
+   value = aws_lambda_function.ecs_lifecycle_function.invoke_arn
 }
 
-output "lambda_ecs_lifecycle_function_version" {
-   value = "${aws_lambda_function.ecs_lifecycle_function.version}"
+output "lambda_function_ecs_lifecycle_version" {
+   value = aws_lambda_function.ecs_lifecycle_function.version
 }
 
-output "asg_schedule_policy_in_arn" {
-  value = "${aws_autoscaling_policy.schedule_scale_in_policy.arn}"
+output "autoscaling_policy_schedule_in_arn" {
+  value = aws_autoscaling_policy.schedule_scale_in_policy.arn
 }
 
-output "asg_schedule_policy_in_name" {
-  value = "${aws_autoscaling_policy.schedule_scale_in_policy.name}"
+output "autoscaling_policy_schedule_in_name" {
+  value = aws_autoscaling_policy.schedule_scale_in_policy.name
 }
 
-output "asg_schedule_policy_in_policy_type" {
-  value = "${aws_autoscaling_policy.schedule_scale_in_policy.policy_type}"
+output "autoscaling_policy_schedule_in_policy_type" {
+  value = aws_autoscaling_policy.schedule_scale_in_policy.policy_type
 }
 
-output "asg_schedule_policy_out_arn" {
-  value = "${aws_autoscaling_policy.schedule_scale_out_policy.arn}"
+output "autoscaling_policy_schedule_out_arn" {
+  value = aws_autoscaling_policy.schedule_scale_out_policy.arn
 }
 
-output "asg_schedule_policy_out_name" {
-  value = "${aws_autoscaling_policy.schedule_scale_out_policy.name}"
+output "autoscaling_policy_schedule_out_name" {
+  value = aws_autoscaling_policy.schedule_scale_out_policy.name
 }
 
-output "asg_schedule_policy_out_policy_type" {
-  value = "${aws_autoscaling_policy.schedule_scale_out_policy.policy_type}"
+output "autoscaling_policy_schedule_out_policy_type" {
+  value = aws_autoscaling_policy.schedule_scale_out_policy.policy_type
 }
 
-output "asg_schedule_out_arn" {
+output "autoscaling_schedule_out_arn" {
   value = aws_autoscaling_schedule.scaleout.arn
 }
 
-output "asg_schedule_in_arn" {
+output "autoscaling_schedule_in_arn" {
   value = aws_autoscaling_schedule.scalein.arn
 }

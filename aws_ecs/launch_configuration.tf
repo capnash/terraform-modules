@@ -33,13 +33,13 @@ resource "aws_launch_configuration" "launch" {
 ## Outputs ##
 #############
 output "launch_configuration_ecs_id" {
-  value = "${aws_launch_configuration.launch.id}"
+  value = aws_launch_configuration.launch.id
 }
 
 output "launch_configuration_ecs_name" {
-  value = "${aws_launch_configuration.launch.name}"
+  value = aws_launch_configuration.launch.name
 }
 
 output "launch_configuration_ecs_arn" {
-  value = "${aws_launch_configuration.launch.arn}"
+  value = aws_launch_configuration.launch.arn
 }

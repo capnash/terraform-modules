@@ -26,13 +26,13 @@ resource "aws_security_group_rule" "alb_to_ecs" {
 ## Outputs ##
 #############
 output "security_group_ecs_id" {
-  value = "${aws_security_group.instance.id}"
+  value = aws_security_group.instance.id
 }
 
 output "security_group_ecs_name" {
-  value = "${aws_security_group.instance.name}"
+  value = aws_security_group.instance.name
 }
 
 output "security_group_ecs_arn" {
-  value = "${aws_security_group.instance.arn}"
+  value = aws_security_group.instance.arn
 }
