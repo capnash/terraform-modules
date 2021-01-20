@@ -12,7 +12,7 @@ resource "aws_autoscaling_group" "asg" {
   health_check_type         = "EC2"
   
   launch_configuration      = aws_launch_configuration.launch.name
-  availability_zones        = [data.aws_availability_zones.all.name]
+  availability_zones        = [data.aws_availability_zones.all.names]
   vpc_zone_identifier       = [var.private_subnets]
 
   tag {

@@ -22,7 +22,7 @@ resource "aws_lb_listener" "http_no_redir" {
   protocol          = "HTTP"
 
   default_action {
-    target_group_arn = aws_lb_target_group.http.arn
+    target_group_arn = aws_lb_target_group.http[0].arn
     type             = "forward"
   }
 
@@ -37,7 +37,7 @@ resource "aws_lb_listener" "http_https" {
   certificate_arn   = var.cert_arn
 
   default_action {
-    target_group_arn = aws_lb_target_group.http.arn
+    target_group_arn = aws_lb_target_group.http[0].arn
     type             = "forward"
   }
 }
@@ -51,7 +51,7 @@ resource "aws_lb_listener" "https" {
   certificate_arn   = var.cert_arn
 
   default_action {
-    target_group_arn = aws_lb_target_group.https.arn
+    target_group_arn = aws_lb_target_group.https[0].arn
     type             = "forward"
   }
 }
