@@ -33,7 +33,7 @@ resource "aws_lb_target_group" "http" {
 }
 
 resource "aws_lb_target_group" "https" {
-  count    = var.https_enabled == "true" ? 1 : 0 
+  count    = var.https_enabled == true ? 1 : 0 
   name     = "${var.environment}-alb-${var.tags["role"]}-https-tg"
   port     = var.https_port
   protocol = "HTTPS"
