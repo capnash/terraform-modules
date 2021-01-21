@@ -12,61 +12,27 @@ exports.handler = function(event, context) {
         "channel": channel,
         "username": "AWS SNS via Lamda",
         "text": "*" + event.Records[0].Sns.Subject + "*",
-        "icon_emoji": ":aws:"
+        "icon_emoji": ":aws_asg:"
     };
 
-    var message = event.Records[0].Sns.Message;
+    var message_json = JSON.parse(event.Records[0].Sns.Message);
+    var message_description = message_json.Description;
+    var message_alarm = message_json.Details.InvokingAlarms[0].AlarmName;
+    var message_region = message_json.Details.InvokingAlarms[0].Region;
+    var message_trigger = message_json.Details.InvokingAlarms[0].Trigger.MetricName 
+                        + " was " + message_json.Details.InvokingAlarms[0].Trigger.ComparisonOperator 
+                        + " of " + message_json.Details.InvokingAlarms[0].Trigger.Threshold;
+
     var severity = "good";
-
-    var dangerMessages = [
-        " but with errors",
-        " to RED",
-        "During an aborted deployment",
-        "Failed to deploy application",
-        "Failed to deploy configuration",
-        "has a dependent object",
-        "is not authorized to perform",
-        "Pending to Degraded",
-        "Stack deletion failed",
-        "Unsuccessful command execution",
-        "You do not have permission",
-        "Your quota allows for 0 more running instance"];
-
-    var warningMessages = [
-        " aborted operation.",
-        " to YELLOW",
-        "Adding instance ",
-        "Degraded to Info",
-        "Deleting SNS topic",
-        "is currently running under desired capacity",
-        "Ok to Info",
-        "Ok to Warning",
-        "Pending Initialization",
-        "Removed instance ",
-        "Rollback of environment"        
-        ];
-    
-    for(var dangerMessagesItem in dangerMessages) {
-        if (message.indexOf(dangerMessages[dangerMessagesItem]) != -1) {
-            severity = "danger";
-            break;
-        }
-    }
-    
-    // Only check for warning messages if necessary
-    if (severity == "good") {
-        for(var warningMessagesItem in warningMessages) {
-            if (message.indexOf(warningMessages[warningMessagesItem]) != -1) {
-                severity = "warning";
-                break;
-            }
-        }        
-    }
+  
 
     postData.attachments = [
         {
-            "color": severity, 
-            "text": message
+            "color": severity,
+            "pretext": message_description,
+            "author_name": message_region,
+            "title": "Trigger: " + message_alarm,
+            "text": message_trigger
         }
     ];
 

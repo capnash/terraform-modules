@@ -52,10 +52,16 @@ variable "cpu_adjustment_type" {
   default     = "ChangeInCapacity"
 }
 
-variable "cpu_scaling_adjustment" {
+variable "cpu_scaling_out_adjustment" {
   description = "Adjustment amount"
   type        = string
   default     = 1
+}
+
+variable "cpu_scaling_in_adjustment" {
+  description = "Adjustment amount"
+  type        = string
+  default     = -1
 }
 
 variable "cpu_cooldown" {

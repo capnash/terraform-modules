@@ -4,7 +4,7 @@ resource "aws_autoscaling_policy" "cpu_policy_scale_out" {
   autoscaling_group_name = aws_autoscaling_group.asg.name
   
   adjustment_type       = var.cpu_adjustment_type
-  scaling_adjustment    = var.cpu_scaling_adjustment
+  scaling_adjustment    = var.cpu_scaling_out_adjustment
   cooldown              = var.cpu_cooldown
   policy_type           = var.cpu_policy_type
 }
@@ -36,7 +36,7 @@ resource "aws_autoscaling_policy" "cpu_policy_scale_in" {
   autoscaling_group_name = aws_autoscaling_group.asg.name
   
   adjustment_type       = var.cpu_adjustment_type
-  scaling_adjustment    = var.cpu_scaling_adjustment
+  scaling_adjustment    = var.cpu_scaling_in_adjustment
   cooldown              = var.cpu_cooldown
   policy_type           = var.cpu_policy_type
 }
