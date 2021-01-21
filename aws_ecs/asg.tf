@@ -2,9 +2,10 @@ resource "aws_autoscaling_group" "asg" {
   name                      = "${var.environment}-aws-ecs-asg"
   max_size                  = var.asg_max
   min_size                  = var.asg_min
-
   desired_capacity          = var.asg_desired
+  
   metrics_granularity       = var.metrics_granularity
+  enabled_metrics           = var.metrics
 
   force_delete              = true
   

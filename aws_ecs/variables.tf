@@ -35,6 +35,12 @@ variable "metrics_granularity" {
   default     = "1Minute"
 }
 
+variable "metrics" {
+  description = "A list of metrics to collect."
+  type        = list
+  default     = ["GroupDesiredCapacity", "GroupInServiceCapacity", "GroupPendingCapacity", "GroupMinSize", "GroupMaxSize", "GroupInServiceInstances", "GroupPendingInstances", "GroupStandbyInstances", "GroupStandbyCapacity", "GroupTerminatingCapacity", "GroupTerminatingInstances", "GroupTotalCapacity", "GroupTotalInstances"]
+}
+
 variable "private_subnets" {
   description = "List of Subnets to autoscale into"
   type        = list
