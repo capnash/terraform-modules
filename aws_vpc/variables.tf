@@ -113,7 +113,7 @@ variable "enable_nat_gateway" {
 
 variable "single_nat_gateway" {
   description = "should be true if you want to provision a single shared NAT Gateway across all of your private networks"
-  type        = string
+  type        = bool
   default     = true
 }
 
