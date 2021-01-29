@@ -9,6 +9,20 @@ resource "aws_default_security_group" "default" {
     to_port   = 0
   }
 
+  ingress {
+    protocol  = 445
+    self      = true
+    from_port = 10.0.0.0/16
+    to_port   = 10.0.0.0/16
+  }
+
+  ingress {
+    protocol  = 5985
+    self      = true
+    from_port = 10.0.0.0/16
+    to_port   = 10.0.0.0/16
+  }
+
   egress {
     from_port   = 0
     to_port     = 0
