@@ -9,19 +9,21 @@ resource "aws_default_security_group" "default" {
     to_port   = 0
   }
 
+#remove this when FSX connection is no longer required XI.
   ingress {
-    protocol  = tcp
-    self      = true
-    from_port = 445
-    to_port   = 445
+    description = "This is tcp port is for the FSX SMB connection"
+    protocol    = "tcp"
+    from_port   = 445
+    to_port     = 445
     cidr_blocks = ["10.0.0.0/8"]
   }
 
+#remove this when FSX connection is no longer required for XI.
   ingress {
-    protocol  = tcp
-    self      = true
-    from_port = 5985
-    to_port   = 5985
+    description = "This is tcp port is for the FSX Windows connection"
+    protocol    = "tcp"
+    from_port   = 5985
+    to_port     = 5985
     cidr_blocks = ["10.0.0.0/8"]
   }
 
