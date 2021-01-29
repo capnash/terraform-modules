@@ -10,17 +10,19 @@ resource "aws_default_security_group" "default" {
   }
 
   ingress {
-    protocol  = 445
+    protocol  = tcp
     self      = true
-    from_port = 10.0.0.0/8
-    to_port   = 10.0.0.0/8
+    from_port = 445
+    to_port   = 445
+    cidr_blocks = ["10.0.0.0/8"]
   }
 
   ingress {
-    protocol  = 5985
+    protocol  = tcp
     self      = true
-    from_port = 10.0.0.0/8
-    to_port   = 10.0.0.0/8
+    from_port = 5985
+    to_port   = 5985
+    cidr_blocks = ["10.0.0.0/8"]
   }
 
   egress {
