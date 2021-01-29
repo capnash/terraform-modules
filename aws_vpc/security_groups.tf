@@ -19,7 +19,7 @@ resource "aws_default_security_group" "default" {
   }
 
   ingress {
-    description = "This is tcp port for the FSX  connection"
+    description = "This is tcp port for the FSX Windows connection"
     protocol    = "tcp"
     self        = true
     from_port   = 5985
