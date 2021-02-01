@@ -1,11 +1,11 @@
 resource "aws_ecr_repository" "repo" {
-  count = "${var.enabled ? 1 : 0}"
-  name  = "${var.repo_name}"
-  tags  = "${var.tags}"
+  count = (var.enabled == true ) ? 1 : 0 
+  name  = var.repo_name
+  tags  = var.tags
 }
 
 resource "aws_ecr_repository_policy" "repo_policy" {
-  count      = "${var.enabled ? 1 : 0}"
+  count      = (var.enabled == true ) ? 1 : 0 
   repository = aws_ecr_repository.repo.name
 
   policy = <<EOF
@@ -34,7 +34,7 @@ EOF
 }
 
 resource "aws_ecr_lifecycle_policy" "repo_policy" {
-  count      = "${var.enabled ? 1 : 0}"
+  count      = (var.enabled == true ) ? 1 : 0 
   repository = aws_ecr_repository.repo.name
 
   policy = <<EOF
