@@ -1,11 +1,11 @@
 resource "aws_ecr_repository" "repo" {
   count = "${var.enabled ? 1 : 0}"
-  name = "${var.repo_name}"
-  tags = "${var.tags}"
+  name  = "${var.repo_name}"
+  tags  = "${var.tags}"
 }
 
 resource "aws_ecr_repository_policy" "repo_policy" {
-  count = "${var.enabled ? 1 : 0}"
+  count      = "${var.enabled ? 1 : 0}"
   repository = "${aws_ecr_repository.repo.name}"
 
   policy = <<EOF
@@ -34,7 +34,7 @@ EOF
 }
 
 resource "aws_ecr_lifecycle_policy" "repo_policy" {
-  count = "${var.enabled ? 1 : 0}"
+  count      = "${var.enabled ? 1 : 0}"
   repository = "${aws_ecr_repository.repo.name}"
 
   policy = <<EOF
@@ -56,4 +56,24 @@ resource "aws_ecr_lifecycle_policy" "repo_policy" {
   ]
 }
 EOF
+}
+
+#############
+## Outputs ##
+#############
+
+output "ecr_arn" {
+  value = "${aws_ecr_repository.repo.*.arn}"
+}
+
+output "ecr_name" {
+  value = "${aws_ecr_repository.repo.*.name}"
+}
+
+output "ecr_registry_id" {
+  value = "${aws_ecr_repository.repo.*.registry_id}"
+}
+
+output "ecr_repository_url" {
+  value = "${aws_ecr_repository.repo.*.repository_url}"
 }
