@@ -14,9 +14,7 @@ resource "aws_ecr_repository_policy" "repo_policy" {
           "Sid": "AllowPushPull",
           "Effect": "Allow",
           "Principal":{ [
-                "AWS": "arn:aws:iam::${var.account_id}:root",
-                "AWS": "arn:aws:sts::${var.account_id}:assumed-role/terraform-ci-pipelines-${var.environment}-tf/next-white-label",
-                "AWS": "arn:aws:iam::${var.account_id}:role/terraform-ci-pipelines-${var.environment}-tf"
+                "AWS": "*"
           ]
             },
           "Action": [
