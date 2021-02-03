@@ -13,10 +13,9 @@ resource "aws_ecr_repository_policy" "repo_policy" {
       {
           "Sid": "AllowPushPull",
           "Effect": "Allow",
-          "Principal":{ [
-                "AWS": "*"
-          ]
-            },
+          "Principal":{
+                "AWS": "arn:aws:iam::${var.account_id}:root"
+          },
           "Action": [
               "ecr:BatchCheckLayerAvailability",
               "ecr:BatchGetImage",
