@@ -29,8 +29,3 @@ variable "tags" {
   description = "map of tags"
   type        = "map"
 }
-
-variable "environment" {
-  description = "Environment that service is being built in"
-  type        = string
-}
