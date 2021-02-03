@@ -14,7 +14,8 @@ resource "aws_ecr_repository_policy" "repo_policy" {
           "Sid": "AllowPushPull",
           "Effect": "Allow",
           "Principal":{
-                "AWS": "arn:aws:iam::${var.account_id}:root"
+                "AWS": "arn:aws:iam::${var.account_id}:root",
+                "AWS": "arn:aws:sts::${var.account_id}:assumed-role/terraform-ci-pipelines-dev-tf/next-white-label"
             },
           "Action": [
               "ecr:BatchCheckLayerAvailability",
