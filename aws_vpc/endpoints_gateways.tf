@@ -4,9 +4,17 @@ resource "aws_internet_gateway" "igw" {
 }
 
 resource "aws_vpc_endpoint" "ep" {
-  vpc_id       = aws_vpc.vpc.id
-  service_name = data.aws_vpc_endpoint_service.s3.service_name
-  tags         = merge(var.tags, map("Name", format("%s-ep", var.name)))
+  vpc_id            = aws_vpc.vpc.id
+  service_name      = data.aws_vpc_endpoint_service.s3.service_name
+  vpc_endpoint_type = "Gateway"
+  tags              = merge(var.tags, map("Name", format("%s-ep", var.name)))
+}
+
+resource "aws_vpc_endpoint" "dynamodb" {
+  vpc_id            = aws_vpc.vpc.id
+  service_name      = data.aws_vpc_endpoint_service.dynamodb.service_name
+  vpc_endpoint_type = "Gateway"
+  tags              = merge(var.tags, map("Name", format("%s-dynamodb-ep", var.name)))
 }
 
 resource "aws_eip" "nateip" {

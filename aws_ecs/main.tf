@@ -1,9 +1,5 @@
 data "aws_availability_zones" "all" {}
 
-data "aws_vpc_endpoint_service" "s3" {
-  service = "s3"
-}
-
 # data "template_file" "user_data" {
 #   template = file(""${path.module}/files/user_data.sh"})
 
