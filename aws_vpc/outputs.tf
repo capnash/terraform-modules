@@ -105,7 +105,7 @@ output private_route_table_ids {
   value = aws_route_table.private.*.id
 }
 
-output private_route_table_id {
+output default_route_table_id {
   value = aws_default_route_table.default.id
 }
 
