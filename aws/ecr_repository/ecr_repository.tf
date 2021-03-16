@@ -1,5 +1,5 @@
 resource "aws_ecr_repository" "ecr_repository" {
-    name = "${var.caller}-${var.name}"
+    name = "${lower(var.svc)}/${lower(var.name)}"
     tags = {
         Name = "${upper(var.caller)}-${var.name}"
         Description = "${var.description}"
