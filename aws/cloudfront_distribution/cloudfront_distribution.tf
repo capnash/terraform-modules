@@ -1,6 +1,6 @@
 resource "aws_cloudfront_distribution" "cloudfront_distribution" {
     aliases = "${var.aliases}"
-    comment = "${upper(var.caller)} ${var.description}"
+    comment = "${var.caller} ${var.description}"
     dynamic "custom_error_response" {
         for_each = [for key in var.error_msg: {
             error_caching_min_ttl = key.error_caching_min_ttl
@@ -179,9 +179,9 @@ resource "aws_cloudfront_distribution" "cloudfront_distribution" {
     retain_on_delete = "${var.retain}"
     wait_for_deployment = "${var.wait_for_deploy}"
     tags = {
-        Name = "${upper(var.caller)}-${var.name}"
+        Name = "${var.caller}-${var.name}"
         Description = "${var.description}"
-        Environment = "${upper(var.caller)}"
+        Environment = "${var.caller}"
         Service = "${var.svc}"
     }
 

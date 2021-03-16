@@ -1,5 +1,5 @@
 resource "aws_glue_connection" "glue_redshift_vpc_connection" {
-    name = "${upper(var.caller)}_${var.name}"
+    name = "${var.caller}_${var.name}"
 
     connection_properties = {
         JDBC_CONNECTION_URL = var.connection_url

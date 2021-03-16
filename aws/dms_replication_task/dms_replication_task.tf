@@ -9,8 +9,8 @@ resource "aws_dms_replication_task" "dms_replication_task" {
     replication_task_settings = var.replication_task_settings 
 
     tags = {
-        Name = "${upper(var.caller)}"
-        Environment = "${upper(var.caller)}"
+        Name = "${var.caller}"
+        Environment = "${var.caller}"
         Service = "${var.svc}"
         Description = var.description
     }

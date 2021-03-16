@@ -8,9 +8,9 @@ resource "aws_ssm_parameter" "ssm_parameter" {
     overwrite = "${var.overwrite}"
     allowed_pattern = "${var.pattern}"
     tags = {
-        Name = "${upper(var.caller)}-${var.name}"
+        Name = "${var.caller}-${var.name}"
         Description = "${var.description}"
-        Environment = "${upper(var.caller)}"
+        Environment = "${var.caller}"
         Service = "${var.svc}"
     }
 

@@ -1,5 +1,5 @@
 resource "aws_autoscaling_policy" "autoscaling_policy" {
-    name = "${upper(var.caller)}-${var.name}"
+    name = "${var.caller}-${var.name}"
     autoscaling_group_name = var.autoscaling_group
     adjustment_type = var.adjustment_type
     policy_type = var.policy_type
@@ -45,7 +45,7 @@ resource "aws_autoscaling_policy" "autoscaling_policy" {
                         value = metric_dimension.value.dim.value
                     }
                 }
-                metric_name = "${upper(var.caller)}-${customized_metric_specification.value.cus.metric_name}"
+                metric_name = "${var.caller}-${customized_metric_specification.value.cus.metric_name}"
                 namespace = customized_metric_specification.value.cus.namespace
                 statistic = customized_metric_specification.value.cus.statistic
                 unit = customized_metric_specification.value.cus.unit

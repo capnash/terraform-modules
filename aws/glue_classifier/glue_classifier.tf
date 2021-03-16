@@ -1,5 +1,5 @@
 resource "aws_glue_classifier" "csv_glue_classifier" {
-    name = "${upper(var.caller)}-${var.name}"
+    name = "${var.caller}-${var.name}"
     
     csv_classifier {
         allow_single_column = false

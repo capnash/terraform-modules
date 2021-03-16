@@ -7,7 +7,7 @@ resource "aws_secretsmanager_secret" "secret" {
     tags = {
         Name = "${var.name}"
         Description = "${var.description}"
-        Environment = "${upper(var.caller)}"
+        Environment = "${var.caller}"
         Service = "${var.svc}"
     }
 

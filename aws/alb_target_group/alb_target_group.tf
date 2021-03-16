@@ -1,5 +1,5 @@
 resource "aws_lb_target_group" "alb_target_group" {
-    name = "${upper(var.caller)}-${var.name}"
+    name = "${var.caller}-${var.name}"
     port = "${var.port}"
     protocol = "${var.protocol}"
     vpc_id = "${var.vpc}"
@@ -29,9 +29,9 @@ resource "aws_lb_target_group" "alb_target_group" {
         matcher = "${var.health_matcher}"
     }
     tags = {
-        Name = "${upper(var.caller)}-${var.name}"
+        Name = "${var.caller}-${var.name}"
         Description = "${var.description}"
-        Environment = "${upper(var.caller)}"
+        Environment = "${var.caller}"
         Service = "${var.svc}"
     }
 

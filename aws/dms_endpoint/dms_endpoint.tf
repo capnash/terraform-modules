@@ -11,8 +11,8 @@ resource "aws_dms_endpoint" "dms_endpoint" {
     username = var.username
 
     tags = {
-        Name = "${upper(var.caller)}-${var.endpoint_id}"
-        Environment = "${upper(var.caller)}"
+        Name = "${var.caller}-${var.endpoint_id}"
+        Environment = "${var.caller}"
         Service = "${var.svc}"
         Description = var.description
     }

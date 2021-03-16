@@ -179,9 +179,9 @@ resource "aws_s3_bucket" "s3_bucket" {
         }
     }
     tags = {
-        Name = "${upper(var.caller)}-${var.name}"
+        Name = "${var.caller}-${var.name}"
         Description = "${var.description}"
-        Environment = "${upper(var.caller)}"
+        Environment = "${var.caller}"
         Service = "${var.svc}"
     }
 

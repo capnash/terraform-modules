@@ -13,7 +13,7 @@ resource "aws_docdb_cluster_parameter_group" "docdb_parameter_group" {
         }
     }
     tags = {
-        Name = "${upper(var.caller)}-${var.name}"
+        Name = "${var.caller}-${var.name}"
         Description = "${var.description}"
         Environment = "${var.caller}"
         Service = "${var.svc}"

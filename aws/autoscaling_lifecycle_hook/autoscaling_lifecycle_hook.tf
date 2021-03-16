@@ -1,5 +1,5 @@
 resource "aws_autoscaling_lifecycle_hook" "autoscaling_lifecycle_hook" {
-    name = "${upper(var.caller)}-${var.name}"
+    name = "${var.caller}-${var.name}"
     autoscaling_group_name = var.autoscaling_group
     default_result = var.default_result
     heartbeat_timeout = var.timeout

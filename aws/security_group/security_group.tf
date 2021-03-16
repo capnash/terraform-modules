@@ -1,12 +1,12 @@
 resource "aws_security_group" "security_group" {
-    name = "${upper(var.caller)}-${var.name}"
+    name = "${var.caller}-${var.name}"
     description = "${var.description}"
     revoke_rules_on_delete = "${var.revoke_all}"
     vpc_id = "${var.vpc}"
     tags = {
-        Name = "${upper(var.caller)}-${var.name}"
+        Name = "${var.caller}-${var.name}"
         Description = "${var.description}"
-        Environment = "${upper(var.caller)}"
+        Environment = "${var.caller}"
         Service = "${var.svc}"
     }
 

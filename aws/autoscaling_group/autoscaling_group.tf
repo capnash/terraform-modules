@@ -1,5 +1,5 @@
 resource "aws_autoscaling_group" "autoscaling_group" {
-    name = "${upper(var.caller)}-${var.name}"
+    name = "${var.caller}-${var.name}"
     max_size = var.max
     min_size = var.min
     capacity_rebalance = var.rebalance
@@ -81,7 +81,7 @@ resource "aws_autoscaling_group" "autoscaling_group" {
             map = merge(local.defaults.lifecycle_hook,key)
         }]
         content {
-            name = "${upper(var.caller)}-${initial_lifecycle_hook.value.map.name}"
+            name = "${var.caller}-${initial_lifecycle_hook.value.map.name}"
             default_result = initial_lifecycle_hook.value.map.default_result
             heartbeat_timeout = initial_lifecycle_hook.value.map.timeout
             lifecycle_transition = initial_lifecycle_hook.value.map.lifecycle_transition

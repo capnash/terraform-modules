@@ -15,8 +15,8 @@ resource "aws_dms_replication_instance" "replication_instance" {
     vpc_security_group_ids = var.vpc_sec_group_ids
 
     tags = {
-        Name = "${upper(var.caller)}"
-        Environment = "${upper(var.caller)}"
+        Name = "${var.caller}"
+        Environment = "${var.caller}"
         Service = "${var.svc}"
         Description = var.description
     }

@@ -1,5 +1,5 @@
 resource "aws_api_gateway_rest_api" "api_gateway_rest_api" {
-    name = "${upper(var.caller)}-${var.name}"
+    name = "${var.caller}-${var.name}"
     description = "${var.description}"
     dynamic "endpoint_configuration" {
         for_each = [for key in var.endpoint_config: {
@@ -15,9 +15,9 @@ resource "aws_api_gateway_rest_api" "api_gateway_rest_api" {
     policy = "${var.policy}"
     api_key_source = "${var.api_key_source}"
     tags = {
-        Name = "${upper(var.caller)}-${var.name}"
+        Name = "${var.caller}-${var.name}"
         Description = "${var.description}"
-        Environment = "${upper(var.caller)}"
+        Environment = "${var.caller}"
         Service = "${var.svc}"
     }
 

@@ -1,5 +1,5 @@
 resource "aws_lambda_function" "lambda_function" {
-    function_name = "${upper(var.caller)}-${var.name}"
+    function_name = "${var.caller}-${var.name}"
     role = "${var.iam_role}"
     runtime = "${var.runtime}"
     filename = "${var.file}"
@@ -41,9 +41,9 @@ resource "aws_lambda_function" "lambda_function" {
         }
     }
     tags = {
-        Name = "${upper(var.caller)}-${var.name}"
+        Name = "${var.caller}-${var.name}"
         Description = "${var.description}"
-        Environment = "${upper(var.caller)}"
+        Environment = "${var.caller}"
         Service = "${var.svc}"
     }
 

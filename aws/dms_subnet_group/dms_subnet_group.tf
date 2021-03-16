@@ -5,8 +5,8 @@ resource "aws_dms_replication_subnet_group" "dms_subnet_group" {
     subnet_ids = var.subnet_ids
 
     tags = {
-        Name = "${upper(var.caller)}-${var.subnet_group_id}"
-        Environment = "${upper(var.caller)}"
+        Name = "${var.caller}-${var.subnet_group_id}"
+        Environment = "${var.caller}"
         Service = "${var.svc}"
         Description = var.description
     }

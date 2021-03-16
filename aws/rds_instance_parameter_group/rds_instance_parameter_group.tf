@@ -13,9 +13,9 @@ resource "aws_db_parameter_group" "rds_instance_parameter_group" {
         }
     }
     tags = {
-        Name = "${upper(var.caller)}-${var.name}"
+        Name = "${var.caller}-${var.name}"
         Description = "${var.description}"
-        Environment = "${upper(var.caller)}"
+        Environment = "${var.caller}"
         Service = "${var.svc}"
     }
 

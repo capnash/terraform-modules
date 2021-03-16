@@ -23,7 +23,7 @@ resource "aws_s3_bucket_object" "object" {
     tags = {
         Name = "${var.dest}"
         Description = "${var.description}"
-        Environment = "${upper(var.caller)}"
+        Environment = "${var.caller}"
         Service = "${var.svc}"
     }
     

@@ -1,5 +1,5 @@
 resource "aws_dynamodb_table" "dynamodb_table" {
-    name                = "${upper(var.caller)}-${var.name}"
+    name                = "${var.caller}-${var.name}"
     billing_mode        = "${var.billing_mode}"
     read_capacity       = "${var.read_capacity}"
     write_capacity      = "${var.write_capacity}"
@@ -25,9 +25,9 @@ resource "aws_dynamodb_table" "dynamodb_table" {
     }
 
     tags = {
-        Name = "${upper(var.caller)}-${var.name}"
+        Name = "${var.caller}-${var.name}"
         Description = "${var.description}"
-        Environment = "${upper(var.caller)}"
+        Environment = "${var.caller}"
         Service = "${var.svc}"
     }
     lifecycle {

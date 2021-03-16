@@ -8,7 +8,7 @@ resource "aws_kms_key" "kms_key" {
     tags = {
         Name = "${var.name}"
         Description = "${var.description}"
-        Environment = "${upper(var.caller)}"
+        Environment = "${var.caller}"
         Service = "${var.svc}"
     }
 

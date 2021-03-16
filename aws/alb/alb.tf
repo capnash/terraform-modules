@@ -1,5 +1,5 @@
 resource "aws_lb" "alb" {
-    name = "${upper(var.caller)}-${var.name}"
+    name = "${var.caller}-${var.name}"
     internal = "${var.internal}"
     load_balancer_type = "${var.type}"
     security_groups = "${var.sec_groups}"
@@ -27,9 +27,9 @@ resource "aws_lb" "alb" {
     enable_http2 = "${var.http2}"
     ip_address_type = "${var.ip_type}"
     tags = {
-        Name = "${upper(var.caller)}-${var.name}"
+        Name = "${var.caller}-${var.name}"
         Description = "${var.description}"
-        Environment = "${upper(var.caller)}"
+        Environment = "${var.caller}"
         Service = "${var.svc}"
     }
 

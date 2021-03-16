@@ -1,5 +1,5 @@
 resource "aws_mq_broker" "mq_broker" {
-  broker_name = "${upper(var.caller)}-${var.name}"
+  broker_name = "${var.caller}-${var.name}"
 
   configuration {
     id       = "${var.configuration_id}"
@@ -20,9 +20,9 @@ resource "aws_mq_broker" "mq_broker" {
   }
 
   tags = {
-    Name = "${upper(var.caller)}-${var.name}"
+    Name = "${var.caller}-${var.name}"
     Description = "${var.description}"
-    Environment = "${upper(var.caller)}"
+    Environment = "${var.caller}"
     Service = "${var.svc}"
   }
 

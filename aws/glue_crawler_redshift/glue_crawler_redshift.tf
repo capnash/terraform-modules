@@ -1,5 +1,5 @@
 resource "aws_glue_crawler" "glue_crawler_redshift" {
-    name = "${upper(var.caller)}_${var.name}"
+    name = "${var.caller}_${var.name}"
     database_name = var.glue_database_name
     role = var.role_arn
 
@@ -9,8 +9,8 @@ resource "aws_glue_crawler" "glue_crawler_redshift" {
     }
 
     tags = {
-        Name = "${upper(var.caller)}-${var.name}"
-        Environment = "${upper(var.caller)}"
+        Name = "${var.caller}-${var.name}"
+        Environment = "${var.caller}"
         Service = "${var.svc}"
     }
 }

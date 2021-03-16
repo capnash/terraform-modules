@@ -5,7 +5,7 @@ resource "aws_cloudwatch_log_group" "log_group" {
     tags = {
         Name = "${var.name}"
         Description = "${var.description}"
-        Environment = "${upper(var.caller)}"
+        Environment = "${var.caller}"
         Service = "${var.svc}"
     }
 

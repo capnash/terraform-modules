@@ -13,9 +13,9 @@ resource "aws_rds_cluster_parameter_group" "rds_cluster_parameter_group" {
         }
     }
     tags = {
-        Name = "${upper(var.caller)}-${var.name}"
+        Name = "${var.caller}-${var.name}"
         Description = "${var.description}"
-        Environment = "${upper(var.caller)}"
+        Environment = "${var.caller}"
         Service = "${var.svc}"
     }
 

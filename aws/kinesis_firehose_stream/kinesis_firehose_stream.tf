@@ -1,5 +1,5 @@
 resource "aws_kinesis_firehose_delivery_stream" "kinesis_firehose" {
-    name = "${upper(var.caller)}-${var.name}"
+    name = "${var.caller}-${var.name}"
     destination = "${var.destination}"
     dynamic "kinesis_source_configuration" {
         for_each = [for key in var.kinesis_source: {
@@ -387,9 +387,9 @@ resource "aws_kinesis_firehose_delivery_stream" "kinesis_firehose" {
         }
     }
     tags = {
-        Name = "${upper(var.caller)}-${var.name}"
+        Name = "${var.caller}-${var.name}"
         Description = "${var.description}"
-        Environment = "${upper(var.caller)}"
+        Environment = "${var.caller}"
         Service = "${var.svc}"
     }
 

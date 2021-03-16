@@ -1,5 +1,5 @@
 resource "aws_glue_job" "glue_job" {
-    name = "${upper(var.caller)}_${var.name}"
+    name = "${var.caller}_${var.name}"
     role_arn = var.role_arn
     glue_version = "1.0"
 
@@ -22,8 +22,8 @@ resource "aws_glue_job" "glue_job" {
     }
 
     tags = {
-        Name = "${upper(var.caller)}-${var.name}"
-        Environment = "${upper(var.caller)}"
+        Name = "${var.caller}-${var.name}"
+        Environment = "${var.caller}"
         Service = "${var.svc}"
     }
 }

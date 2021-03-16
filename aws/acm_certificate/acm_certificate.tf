@@ -5,7 +5,7 @@ resource "aws_acm_certificate" "acm_certificate" {
     tags = {
         Name = "${var.name}"
         Description = "${var.description}"
-        Environment = "${upper(var.caller)}"
+        Environment = "${var.caller}"
         Service = "${var.svc}"
     }
 

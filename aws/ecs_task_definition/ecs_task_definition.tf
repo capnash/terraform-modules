@@ -1,5 +1,5 @@
 resource "aws_ecs_task_definition" "ecs_task_definition" {
-    family = "${upper(var.caller)}-${var.name}"
+    family = "${var.caller}-${var.name}"
     container_definitions = "${var.definition}"
     task_role_arn = "${var.task_role}"
     execution_role_arn = "${var.daemon_role}"
@@ -40,9 +40,9 @@ resource "aws_ecs_task_definition" "ecs_task_definition" {
     memory = "${var.memory}"
     requires_compatibilities = "${var.compatibilities}"
     tags = {
-        Name = "${upper(var.caller)}-${var.name}"
+        Name = "${var.caller}-${var.name}"
         Description = "${var.description}"
-        Environment = "${upper(var.caller)}"
+        Environment = "${var.caller}"
         Service = "${var.svc}"
     }
 

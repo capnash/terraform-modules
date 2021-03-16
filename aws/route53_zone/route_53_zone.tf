@@ -14,7 +14,7 @@ resource "aws_route53_zone" "route53_zone" {
     tags = {
         Name = "${var.name} Domain"
         Description = "${var.description}"
-        Environment = "${upper(var.caller)}"
+        Environment = "${var.caller}"
         Service = "${var.svc}"
     }
 

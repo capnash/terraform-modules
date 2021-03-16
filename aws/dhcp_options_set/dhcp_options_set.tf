@@ -7,7 +7,7 @@ resource "aws_vpc_dhcp_options" "dhcp_options_set" {
     tags = {
         Name = "${var.name}"
         Description = "${var.description}"
-        Environment = "${upper(var.caller)}"
+        Environment = "${var.caller}"
         Service = "${var.svc}"
     }
 

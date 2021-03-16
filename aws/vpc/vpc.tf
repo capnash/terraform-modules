@@ -4,7 +4,7 @@ resource "aws_vpc" "vpc" {
     enable_dns_support = "${var.dns_support}"
     enable_dns_hostnames = "${var.dns_names}"
     tags = {
-        Name = "${upper(var.caller)}-${var.name}"
+        Name = "${var.caller}-${var.name}"
         Description = "${var.description}"
         Service = "${var.svc}"
     }

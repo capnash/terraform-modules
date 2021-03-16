@@ -1,5 +1,5 @@
 resource "aws_ecs_service" "ecs_service" {
-    name = "${upper(var.caller)}-${var.name}"
+    name = "${var.caller}-${var.name}"
     dynamic "capacity_provider_strategy" {
         for_each = [for key in var.capacity_provider_strategy: {
             map = merge(local.defaults.capacity_provider_strategy,key)

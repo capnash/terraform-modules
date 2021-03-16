@@ -5,9 +5,9 @@ resource "aws_vpc_peering_connection" "vpc_peering_connection" {
     auto_accept = "${var.auto_accept}"
     peer_region = "${var.peer_region}"
     tags = {
-        Name = "${upper(var.caller)}-${var.name}"
+        Name = "${var.caller}-${var.name}"
         Description = "${var.description}"
-        Environment = "${upper(var.caller)}"
+        Environment = "${var.caller}"
         Service = "${var.svc}"
     }
 

@@ -1,5 +1,5 @@
 resource "aws_cloudwatch_metric_alarm" "cloudwatch_alarm" {
-    alarm_name = "${upper(var.caller)}-${var.name}"
+    alarm_name = "${var.caller}-${var.name}"
     alarm_description = "${var.description}"
     metric_name = "${var.metric}"
     comparison_operator = "${var.operator}"
@@ -16,9 +16,9 @@ resource "aws_cloudwatch_metric_alarm" "cloudwatch_alarm" {
     ok_actions = "${var.okx}"
     actions_enabled = "${var.enablex}"
     /*tags = {
-        Name = "${upper(var.caller)}-${var.name}"
+        Name = "${var.caller}-${var.name}"
         Description = "${var.description}"
-        Environment = "${upper(var.caller)}"
+        Environment = "${var.caller}"
         Service = "${var.svc}"
     }*/
 

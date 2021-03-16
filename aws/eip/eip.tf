@@ -2,9 +2,9 @@ resource "aws_eip" "eip" {
     vpc = "${var.in_vpc}"
     public_ipv4_pool = "${var.pool}"
     tags = {
-        Name = "${upper(var.caller)}-${var.name}"
+        Name = "${var.caller}-${var.name}"
         Description = "${var.description}"
-        Environment = "${upper(var.caller)}"
+        Environment = "${var.caller}"
         Service = "${var.svc}"
     }
 

@@ -4,8 +4,8 @@ resource "aws_subnet" "subnet" {
     cidr_block = "${var.cidr}"
     map_public_ip_on_launch = "${var.default_public}"
     tags = {
-        Name = "${upper(var.caller)}-${var.name}"
-        Environment = "${upper(var.caller)}"
+        Name = "${var.caller}-${var.name}"
+        Environment = "${var.caller}"
         Description = "${var.description}"
         Service = "${var.svc}"
     }

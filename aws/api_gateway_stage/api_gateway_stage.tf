@@ -19,9 +19,9 @@ resource "aws_api_gateway_stage" "api_gateway_stage" {
     variables = "${var.env_vars}"
     xray_tracing_enabled = "${var.xray_trace}"
     tags = {
-        Name = "${upper(var.caller)}-${var.name}"
+        Name = "${var.caller}-${var.name}"
         Description = "${var.description}"
-        Environment = "${upper(var.caller)}"
+        Environment = "${var.caller}"
         Service = "${var.svc}"
     }
 

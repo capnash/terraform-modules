@@ -19,9 +19,9 @@ resource "aws_docdb_cluster" "docdb_cluster" {
     storage_encrypted = "${var.encrypt}"
     vpc_security_group_ids = "${var.sec_groups}"
     tags = {
-        Name = "${upper(var.caller)}-${var.name}"
+        Name = "${var.caller}-${var.name}"
         Description = "${var.description}"
-        Environment = "${upper(var.caller)}"
+        Environment = "${var.caller}"
         Service = "${var.svc}"
     }
 
