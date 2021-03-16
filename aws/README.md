@@ -1,0 +1,104 @@
+# AWS Resource folder
+Directory containing applicable resources for aws, all resources can be referenced from the services directory as modules using the source command listed
+
+#### List of resources
+
+- **acm_certificate**
+  - Amazon issued ssl certificate for cloud use
+  - source = "../../resources/aws/acm_certificate"
+- **alb**
+  - Application Load Balancer
+  - source = "../../resources/aws/alb"
+- **alb_listener**
+  - A Listener resource for an application load balancer
+  - source = "../../resources/aws/alb_listener"
+- **alb_listener_certificate**
+  - Takes an acm_certificate resource and applies it to an alb_listener resource
+  - source = "../../resources/aws/alb_listener_certificate"
+- **alb_target_group**
+  - Configuration resource for list of resources to be balanced
+  - source = "../../resources/aws/alb_target_group"
+- **alb_target_group_attachment**
+  - Connects a target group to a load balancer
+  - source = "../../resources/aws/alb_target_group_attachment"
+- **cloudwatch_alarm**
+  - Resource for specifying an alert in cloudwatch
+  - source = "../../resources/aws/cloudwatch_alarm"
+- **dhcp_options_set**
+  - Configures advanced dhcp options for the vpc
+  - source = "../../resources/aws/dhcp_options_set"
+- **ebs_volume**
+  - Creates a persistant volume
+  - source = "../../resources/aws/ebs_volume"
+- **ecr_repository**
+  - Creates an amazon hosted docker repository
+  - source = "../../resources/aws/ecr_repository"
+- **ecs_service**
+  - Creates an ECS service to run tasks
+  - source = "../../resources/aws/ecs_service"
+- **ecs_task_definition**
+  - Defines a container environment to run tasks in ECS
+  - source = "../../resources/aws/ecs_task_definition"
+- **eip**
+  - Creates an elastic IP resource
+  - source = "../../resources/aws/eip"
+- **eip_association**
+  - Attaches an elastic IP to another resource
+  - source = "../../resources/aws/eip_association"
+- **elb**
+  - Creates a classic elastic load balancer
+  - source = "../../resources/aws/elb"
+- **elb_attachment**
+  - Attaches a resource to an elastic load balancer
+  - source = "../../resources/aws/elb_attachment"
+- **iam_policy**
+  - Creates an IAM Policy
+  - source = "../../resources/aws/iam_policy"
+- **iam_role**
+   - Creates an IAM Role
+   - source = "../../resources/aws/iam_role"
+- **instance**
+  - Creates an EC2 instance
+  - source = "../../resources/aws/instance"
+- **internet_gateway**
+  - Creates an internet gateway for a VPC
+  - source = "../../resources/aws/internet_gateway"
+- **lambda_function**
+  - Creates a lambda function resource
+  - source = "../../resources/aws/lambda_function"
+- **network_acl**
+  - Creates an ACL for a VPC
+  - source = "../../resources/aws/network_acl"
+- **role_policy_assignment**
+  - Attaches an IAM Policy to a role
+  - source = "../../resources/aws/role_policy_assignment"
+- **s3_bucket**
+  - Creates an empty s3 bucket
+  - source = "../../resources/aws/s3_bucket"
+- **security_group**
+  - Creates a security group
+  - source = "../../resources/aws/security_group"
+- **security_group_rule**
+  - Creates a security group rule and attaches it to a security group
+  - source = "../../resources/aws/security_group_rule"
+- **sns_subscriber**
+  - Creates a subscriber in sns and assigns it to a topic
+  - source = "../../resources/aws/sns_subscriber"
+- **sns_topic**
+  - Creates an sns topic
+  - source = "../../resources/aws/sns_topic"
+- **sqs_queue**
+  - Creates an sqs queue resource
+  - source = "../../resources/aws/sqs_queue
+- **sqs_queue_policy**
+  - Creates a policy for an sqs queue
+  - source = "../../resources/aws/sqs_queue_policy"
+- **subnet**
+  - Creates a subnet in a vpc
+  - source = "../../resources/aws/subnet"
+- **volume_attachment**
+  - Attaches an ebs volume to an instance
+  - source = "../../resources/aws/volume_attachment"
+- **vpc**
+  - Creates a VPC
+  - source = "../../resources/aws/vpc"
