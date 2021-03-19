@@ -1,5 +1,5 @@
 resource "aws_cloudwatch_log_group" "log_group" {
-    name = "${var.name}"
+    name = "${var.caller}-${var.name}"
     retention_in_days = "${var.retention}"
     kms_key_id = "${var.key}"
     tags = {
