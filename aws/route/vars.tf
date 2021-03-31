@@ -9,31 +9,31 @@ variable "rtable" {}
 variable "destination" {}
 
 variable "out_gateway" {
-    default = ""
+    default = null
 }
 
 variable "gateway" {
-    default = ""
+    default = null
 }
 
 variable "instance" {
-    default = ""
+    default = null
 }
 
 variable "nat" {
-    default = ""
+    default = null
 }
 
 variable "nic" {
-    default = ""
+    default = null
 }
 
 variable "transit_gw" {
-    default = ""
+    default = null
 }
 
 variable "vpc_peer" {
-    default = ""
+    default = null
 }
 
 locals {
