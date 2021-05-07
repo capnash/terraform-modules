@@ -3,6 +3,9 @@ variable "caller" {}
 variable "envname" {
     default = []
 }
+variable "rest_api_id" {}
+
+variable  "policy" {}
 
 locals {
     scale = 1
